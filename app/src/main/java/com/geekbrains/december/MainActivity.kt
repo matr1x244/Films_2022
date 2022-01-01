@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 .detach(thisFragment)
                 //.add(R.id.container_main, nextFragment)
                 //.replace(R.id.container_main, nextFragment) // если тут "R.id.container_main" - тогда при нажатии заменяем на nextFragment - тогда как вернутся обратно??
-                .replace(R.id.container_films_fragment, nextFragment) // если тут "R.id.container_films_fragment" - тогда при нажатии накладывается поверх nextFragment - в таком случае это убрать??
+                .replace(R.id.container_films_fragment, nextFragment) // если тут "R.id.container_films_fragment" - тогда при нажатии накладывается поверх nextFragment - в таком случае это убрать?? а так же когда переходаишь например во вкладку сериалы и возвращаешся обратно в фильмы прожимаешь опять кнопку вылетает и ошибка: (/**/)
                 .commit()
 
            /* val intent = Intent(this, MainActivity::class.java)
