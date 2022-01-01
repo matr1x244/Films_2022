@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FilmsBrains</string>
+    <string name="title_films">Фильмы</string>
+    <string name="title_serials">Сериалы</string>
+    <string name="title_setting">Настройки</string>
+    <string name="default_popularity">Рейтинг видео</string>
+    <string name="movie_title">Название</string>
+    <string name="release_date">Дата выпуска</string>
+    <string name="id">ID фильма</string>
+</resources>

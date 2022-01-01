@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/navigation_films"
+        android:icon="@drawable/films_svg"
+        android:title="@string/title_films"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/navigation_serials"
+        android:icon="@drawable/serials_svg"
+        android:title="@string/title_serials"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/setting_svg"
+        android:title="@string/title_setting"
+        app:showAsAction="collapseActionView" />
+
+</menu>
