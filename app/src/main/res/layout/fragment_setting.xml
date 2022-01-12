@@ -7,40 +7,16 @@
     android:id="@+id/container_setting_fragment"
     tools:context=".ui.setting.SettingFragment">
 
-    <LinearLayout
-        android:id="@+id/setting_layout"
+    <TextView
+        android:id="@+id/textTestSetting"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="39dp" />
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Switch1" />
-
-        <Switch
-            android:id="@+id/switch2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Switch2" />
-
-        <Switch
-            android:id="@+id/switch3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Switch3" />
-
-        <Switch
-            android:id="@+id/switch4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Switch4" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

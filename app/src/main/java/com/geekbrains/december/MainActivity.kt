@@ -1,8 +1,7 @@
 package com.geekbrains.december
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
+import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -50,12 +49,12 @@ class MainActivity : AppCompatActivity() {
                 .detach(thisFragment)
                 //.add(R.id.container_main, nextFragment)
                 //.replace(R.id.container_main, nextFragment) // если тут "R.id.container_main" - тогда при нажатии заменяем на nextFragment - тогда как вернутся обратно??
-                .replace(R.id.container_films_fragment, nextFragment) // если тут "R.id.container_films_fragment" - тогда при нажатии накладывается поверх nextFragment - в таком случае это убрать?? а так же когда переходаишь например во вкладку сериалы и возвращаешся обратно в фильмы прожимаешь опять кнопку вылетает и ошибка: (/**/)
+                .add(R.id.container_films_fragment, nextFragment) // если тут "R.id.container_films_fragment" - тогда при нажатии накладывается поверх nextFragment - в таком случае это убрать?? а так же когда переходаишь например во вкладку сериалы и возвращаешся обратно в фильмы прожимаешь опять кнопку вылетает и ошибка: (/**/)
+                //.addToBackStack(R.layout.fragment_films.toString())
                 .commit()
 
-           /* val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)*/
-
+            /* val intent = Intent(this, MainActivity::class.java)
+             startActivity(intent)*/
 
             Toast.makeText(this, "Запускаем: 123", Toast.LENGTH_SHORT).show()
 
@@ -64,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
 
 
 

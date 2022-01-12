@@ -7,14 +7,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.december.R
+import com.geekbrains.december.model.entities.DataMovie
 
-class AdapterRecycleView (var listOfFilms: MutableList<DataFilmsRecycleView>, val listener: OnItemClickListenerFilms) : RecyclerView.Adapter<AdapterRecycleView.ViewHolder>() {
+
+class AdapterRecycleView(private var listOfFilms: MutableList<DataFilmsRecycleView>, var listener: OnItemClickListener):
+    RecyclerView.Adapter<AdapterRecycleView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        //Задаем данные для макета отображения
-        val viewFilms = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
-        return ViewHolder(viewFilms)
 
+        //Задаем данные для макета отображения
+        val viewFilms = LayoutInflater.from(parent.context).inflate(R.layout.cardview_movie, parent, false)
+        return ViewHolder(viewFilms)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -64,9 +67,8 @@ class AdapterRecycleView (var listOfFilms: MutableList<DataFilmsRecycleView>, va
             }
         }
     }
-
         /*Интерфейс кликабельность*/
-        interface OnItemClickListenerFilms{
+        interface OnItemClickListener{
             fun onItemClick(position: Int)
     }
 

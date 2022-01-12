@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SettingViewModel : ViewModel() {
+class SettingViewModel() : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "НАСТРОЙКИ"
+
+    private val textView = MutableLiveData<String>().apply {
+        value = "НАСТРОЙКИ ТЕСТОВАЯ НАДПИСЬ"
     }
-    val text: LiveData <String> = _text
+
+    val text: LiveData<String> = textView
 }

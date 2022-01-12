@@ -7,4 +7,5 @@
     <string name="movie_title">Название</string>
     <string name="release_date">Дата выпуска</string>
     <string name="id">ID фильма</string>
+
 </resources>
