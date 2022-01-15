@@ -6,5 +6,8 @@ interface Repository {
 
     fun getMovieFromServer(): DataFilms
 
-    fun getMovieFromLocalStorage(): DataFilms
+    fun getMovieFromLocalStorageRus(): List<DataFilms>
+
+    fun getMovieFromLocalStorageWorld(): List<DataFilms>
+
 }
