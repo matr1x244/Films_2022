@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import androidx.recyclerview.widget.GridLayoutManager
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.geekbrains.december.R
 import com.geekbrains.december.databinding.CardviewMovieBinding
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.ui.films.main.FilmsFragment
@@ -15,13 +15,18 @@ import com.geekbrains.december.ui.films.main.FilmsFragment
 
 class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemViewClickListener): RecyclerView.Adapter<FilmsFragmentAdapter.FilmsViewHolder>() {
 
-    private var filmsData: List<DataFilms> = listOf()
+    private var filmsData: MutableList<DataFilms> = mutableListOf()//listOf()
     private lateinit var binding: CardviewMovieBinding //задаем шаблон для отображения
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setFilms(data: List<DataFilms>) {
+    fun setFilms(data: MutableList<DataFilms>) {
         filmsData = data
+        //По обновлению данных в recyclerView очень рекомендую освоить DiffUtil:
+        // https://www.raywenderlich.com/21954410-speed-up-your-android-recyclerview-using-diffutil -
+        // это один из самых оптимальных механизмов, позволяет не перерисовывать все данные,
+        // как это делается например при использовании !notifyDatasetChanged!
         notifyDataSetChanged()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmsViewHolder {
@@ -33,15 +38,6 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
 
     override fun onBindViewHolder(holderFilms: FilmsViewHolder, position: Int) {
         holderFilms.bind(filmsData[position])
-
-/*        holderFilms.apply {
-            holderFilms.imageFilms.setImageResource(getRussianFilms().get(position).poster_path) // передаём Иконку
-            holderFilms.textViewId.text = listOfFilms.get(position).id.toString() // передаем ID фильма
-            holderFilms.textViewNameFilms.text = listOfFilms.get(position).title //Передаём имя
-            holderFilms.textViewRaiting.text = listOfFilms.get(position).popularity // Передаём рейтинг
-            holderFilms.textViewReleaseDate.text = listOfFilms.get(position).release_date // перадаем дату релиза фильма
-        }*/
-
     }
 
     // создаём размер и возвращаем его
@@ -54,15 +50,15 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
 
             /*Какие данные передаем в recycleview*/
 
-            //itemPosterPath.setImageResource(R.drawable.films) = films.dataMovie.poster_path(R.drawable.films) - не могу понять как передать картинку каждого фильма
-            //itemPosterPath.setImageResource(R.drawable.films)
+            itemPosterPath.setImageResource(R.drawable.films) // ??? Надо разобраться как передать разные постеры
             listId.text = films.dataMovie.id.toString()
-            listTitle.text = films.dataMovie.title
+            listTitle.text = films.dataMovie.title_name
             listPopularity.text = films.dataMovie.popularity
-            listReleaseDate.text = films.dataMovie.release_date
+            listReleaseDate.text = films.dataMovie.year
+            listSlogan.text = films.dataMovie.slogan
 
             root.setOnClickListener { itemClickListener.onItemViewClick(films)
-                    //Toast.makeText(itemView.context,"---", Toast.LENGTH_LONG).show() - надо разобраться как сюда передать название фильма например
+                Toast.makeText(itemView.context,"Загружаем фильм: ${listTitle.text}", Toast.LENGTH_SHORT).show()
             }
         }
     }

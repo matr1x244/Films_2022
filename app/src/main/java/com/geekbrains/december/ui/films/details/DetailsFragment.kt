@@ -26,19 +26,20 @@ class DetailsFragment: Fragment() {
     //детали.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         arguments?.getParcelable<DataFilms>(BUNDLE_EXTRA)?.let {
             with(binding) {
 
                 /*Передаем данные в detailFragment*/
                 val films = it.dataMovie
                 /*Что будем передавать*/
-                itemPosterPath.setImageResource(R.drawable.setting)
+                itemPosterPath.setImageResource(R.drawable.films)
                 listId.text = films.id.toString()
-                listTitle.text = films.title
+                listTitle.text = films.title_name
                 listPopularity.text = films.popularity
-                listReleaseDate.text = films.release_date
-                listPopularity.text = films.popularity
-                listAbout.text = films.about_move
+                listReleaseDate.text = films.year
+                listAbout.text = films.description_about
+                listSlogan.text = films.slogan
             }
         }
     }

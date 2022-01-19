@@ -1,7 +1,6 @@
 package com.geekbrains.december
 
 import android.os.Bundle
-import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,8 +8,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.geekbrains.december.databinding.ActivityMainBinding
-import com.geekbrains.december.ui.films.main.FilmsFragment
-import com.geekbrains.december.ui.setting.SettingFragment
 
 class MainActivity : AppCompatActivity() {
 

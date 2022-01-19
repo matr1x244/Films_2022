@@ -11,6 +11,10 @@
 
     <!--Кнопка переключения-->
     <string name="change_films_list">Изменить список фильмов</string>
-       <!--Кнопка переключения-->
+    <string name="title_details_fragment">DetailsFragment</string>
+    <string name="slogan">Слоган</string>
+    <string name="error">Ошибка</string>
+    <string name="reload">Перезагрузить</string>
+    <!--Кнопка переключения-->
 
 </resources>
