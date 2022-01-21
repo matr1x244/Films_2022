@@ -6,12 +6,14 @@ import kotlinx.parcelize.Parcelize
 /*Вид и тип данных для recycleview*/
 
 @Parcelize
-data class DataMovie (
+data class DataMovie(
     var poster_path: Int,
     val id: Int,
-    var title: String,
-    var popularity: String,
-    var release_date: String,
-    var about_move: String
+    var original_title: String,
+    var popularity: Double,
+    var year: String,
+    var description_about: String,
+    var slogan: String
+
 ) : Parcelable
 
