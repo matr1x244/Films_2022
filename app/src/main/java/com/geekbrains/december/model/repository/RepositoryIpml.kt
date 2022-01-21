@@ -4,7 +4,7 @@ import com.geekbrains.december.model.entities.*
 
 class RepositoryIpml: Repository {
 
-    override fun getMovieFromServer() = DataFilms()
+    override fun getMovieFromServer(id: Int, original_title: String) = DataFilms()
 
     override fun getMovieFromLocalStorageRus() = getRussianFilms()
 

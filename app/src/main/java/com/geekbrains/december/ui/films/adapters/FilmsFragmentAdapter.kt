@@ -36,6 +36,7 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
         return FilmsViewHolder(binding.root)
     }
 
+    //Загружает данные в указанной позиции в представления, ссылки на которые хранятся в заданном заполнителе представления
     override fun onBindViewHolder(holderFilms: FilmsViewHolder, position: Int) {
         holderFilms.bind(filmsData[position])
     }
@@ -49,11 +50,10 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
         fun bind(films: DataFilms) = with(binding) {
 
             /*Какие данные передаем в recycleview*/
-
             itemPosterPath.setImageResource(R.drawable.films) // ??? Надо разобраться как передать разные постеры
             listId.text = films.dataMovie.id.toString()
-            listTitle.text = films.dataMovie.title_name
-            listPopularity.text = films.dataMovie.popularity
+            listTitle.text = films.dataMovie.original_title
+            listPopularity.text = films.dataMovie.popularity.toString()
             listReleaseDate.text = films.dataMovie.year
             listSlogan.text = films.dataMovie.slogan
 

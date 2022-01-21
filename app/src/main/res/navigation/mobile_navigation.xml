@@ -9,7 +9,11 @@
         android:id="@+id/navigation_films"
         android:name="com.geekbrains.december.ui.films.main.FilmsFragment"
         android:label="@string/title_films"
-        tools:layout="@layout/fragment_films" />
+        tools:layout="@layout/fragment_films">
+    <action
+        android:id="@+id/action_navigation_films_to_detailsFragment"
+        app:destination="@id/detailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_serials"
@@ -22,5 +26,14 @@
         android:name="com.geekbrains.december.ui.setting.SettingFragment"
         android:label="@string/title_setting"
         tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.geekbrains.december.ui.films.details.DetailsFragment"
+        android:label="@string/title_details_fragment" >
+        <argument
+            android:name="films"
+            app:argType="com.geekbrains.december.model.entities.DataFilms" />
+    </fragment>
 
 </navigation>

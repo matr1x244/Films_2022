@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geekbrains.december.R
 import com.geekbrains.december.databinding.DetailsFragmentBinding
+import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.entities.DataFilms
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DetailsFragment: Fragment() {
 
     private var _binding: DetailsFragmentBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: DetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,19 +33,40 @@ class DetailsFragment: Fragment() {
         arguments?.getParcelable<DataFilms>(BUNDLE_EXTRA)?.let {
             with(binding) {
 
-                /*Передаем данные в detailFragment*/
+                //Передаем данные в detailFragment
                 val films = it.dataMovie
-                /*Что будем передавать*/
+                //Что будем передавать
                 itemPosterPath.setImageResource(R.drawable.films)
-                listId.text = films.id.toString()
-                listTitle.text = films.title_name
-                listPopularity.text = films.popularity
+                //listId.text = films.id.toString()
+                //listTitle.text = films.original_title
+                listPopularity.text = films.popularity.toString()
                 listReleaseDate.text = films.year
                 listAbout.text = films.description_about
                 listSlogan.text = films.slogan
+
+                viewModel.filmsLiveData.observe(viewLifecycleOwner, { appState ->
+                    when (appState) {
+                        is AppState.Error -> {
+                            detailsFragment.visibility = View.INVISIBLE
+                        }
+                        AppState.Loading -> {
+                            detailsFragment.visibility = View.INVISIBLE
+                        }
+                        is AppState.Success -> {
+                            detailsFragment.visibility = View.VISIBLE
+                            listId.text = appState.filmsData[0].id.toString()
+                            listTitle.text = appState.filmsData[0].original_title
+
+                        }
+                    }
+                })
             }
+            viewModel.loadData(it.dataMovie.id, it.dataMovie.original_title)
         }
     }
+
+
+
 
         override fun onDestroyView() {
             super.onDestroyView()
