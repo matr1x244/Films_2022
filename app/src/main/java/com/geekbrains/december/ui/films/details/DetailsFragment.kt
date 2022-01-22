@@ -36,13 +36,12 @@ class DetailsFragment: Fragment() {
                 //Передаем данные в detailFragment
                 val films = it.dataMovie
                 //Что будем передавать
-                itemPosterPath.setImageResource(R.drawable.films)
-                //listId.text = films.id.toString()
-                //listTitle.text = films.original_title
-                listPopularity.text = films.popularity.toString()
-                listReleaseDate.text = films.year
-                listAbout.text = films.description_about
-                listSlogan.text = films.slogan
+                itemPoster.setImageResource(R.drawable.films)
+                listId.text = films.id.toString()
+                //listTitle.text = films.title
+                listPopularity.text = films.rating_kinopoisk.toString()
+                //listReleaseDate.text = films.year.toString()
+                //listAbout.text = films.description
 
                 viewModel.filmsLiveData.observe(viewLifecycleOwner, { appState ->
                     when (appState) {
@@ -54,14 +53,17 @@ class DetailsFragment: Fragment() {
                         }
                         is AppState.Success -> {
                             detailsFragment.visibility = View.VISIBLE
-                            listId.text = appState.filmsData[0].id.toString()
-                            listTitle.text = appState.filmsData[0].original_title
+                            /*ЧТО НУЖНО ЗАБРАТЬ И ПОКАЗАТЬ С API прогрузить в поля*/
+                            //listId.text = appState.filmsData[0].id.toString()
+                            listTitle.text = appState.filmsData[0].name
+                            listReleaseDate.text = appState.filmsData[0].year.toString()
+                            listDescription.text = appState.filmsData[0].description
 
                         }
                     }
                 })
             }
-            viewModel.loadData(it.dataMovie.id, it.dataMovie.original_title)
+            viewModel.loadData(it.dataMovie.search)
         }
     }
 

@@ -50,12 +50,11 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
         fun bind(films: DataFilms) = with(binding) {
 
             /*Какие данные передаем в recycleview*/
-            itemPosterPath.setImageResource(R.drawable.films) // ??? Надо разобраться как передать разные постеры
+            itemPoster.setImageResource(R.drawable.films) // ??? Надо разобраться как передать разные постеры
             listId.text = films.dataMovie.id.toString()
-            listTitle.text = films.dataMovie.original_title
-            listPopularity.text = films.dataMovie.popularity.toString()
-            listReleaseDate.text = films.dataMovie.year
-            listSlogan.text = films.dataMovie.slogan
+            listTitle.text = films.dataMovie.name
+            listPopularity.text = films.dataMovie.rating_kinopoisk
+            listReleaseDate.text = films.dataMovie.year.toString()
 
             root.setOnClickListener { itemClickListener.onItemViewClick(films)
                 Toast.makeText(itemView.context,"Загружаем фильм: ${listTitle.text}", Toast.LENGTH_SHORT).show()

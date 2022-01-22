@@ -29,7 +29,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/item_poster_path"
+                android:id="@+id/item_poster"
                 android:layout_width="105dp"
                 android:layout_height="99dp"
                 android:layout_gravity="top"
@@ -49,7 +49,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/item_poster_path"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/release_date"
-                app:layout_constraintStart_toEndOf="@+id/item_poster_path"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
                 app:layout_constraintTop_toBottomOf="@+id/list_popularity" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/default_popularity"
                 android:textColor="#455A64"
-                app:layout_constraintStart_toEndOf="@+id/item_poster_path"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
                 app:layout_constraintTop_toBottomOf="@+id/list_title" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/id"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_poster_path" />
+                app:layout_constraintTop_toBottomOf="@+id/item_poster" />
 
             <TextView
                 android:id="@+id/list_slogan"
@@ -90,11 +90,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/slogan"
-                app:layout_constraintStart_toEndOf="@+id/item_poster_path"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
                 app:layout_constraintTop_toBottomOf="@+id/list_release_date" />
 
             <TextView
-                android:id="@+id/list_about"
+                android:id="@+id/list_description"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -117,7 +117,7 @@
         android:id="@+id/filmsGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="list_slogan,list_about,list_id,item_poster_path,list_title,list_popularity,list_release_date"
+        app:constraint_referenced_ids="list_slogan,list_description,list_id,@+id/item_poster,list_title,list_popularity,list_release_date"
         tools:ignore="NotSibling" />
 
 
