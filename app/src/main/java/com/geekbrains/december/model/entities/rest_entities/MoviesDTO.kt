@@ -5,4 +5,5 @@ data class MoviesDTO(
     val name: String?,
     val year: Int?,
     val description: String?
+
 )

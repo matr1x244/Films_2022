@@ -37,9 +37,9 @@ class DetailsFragment: Fragment() {
                 val films = it.dataMovie
                 //Что будем передавать
                 itemPoster.setImageResource(R.drawable.films)
-                listId.text = films.id.toString()
+                //listId.text = films.id.toString()
                 //listTitle.text = films.title
-                listPopularity.text = films.rating_kinopoisk.toString()
+                //listPopularity.text = films.rating_kinopoisk.toString()
                 //listReleaseDate.text = films.year.toString()
                 //listAbout.text = films.description
 
