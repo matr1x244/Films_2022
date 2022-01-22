@@ -15,11 +15,11 @@ import com.geekbrains.december.ui.films.main.FilmsFragment
 
 class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemViewClickListener): RecyclerView.Adapter<FilmsFragmentAdapter.FilmsViewHolder>() {
 
-    private var filmsData: MutableList<DataFilms> = mutableListOf()//listOf()
+    private var filmsData: List<DataFilms> = mutableListOf()//listOf()
     private lateinit var binding: CardviewMovieBinding //задаем шаблон для отображения
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setFilms(data: MutableList<DataFilms>) {
+    fun setFilms(data: List<DataFilms>) {
         filmsData = data
         //По обновлению данных в recyclerView очень рекомендую освоить DiffUtil:
         // https://www.raywenderlich.com/21954410-speed-up-your-android-recyclerview-using-diffutil -

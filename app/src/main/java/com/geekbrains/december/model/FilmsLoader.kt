@@ -11,19 +11,23 @@ import java.net.URL
 import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
 
+private const val API_KEY = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
 
 object FilmsLoader {
-    fun loadFilms(search: Int): FilmsDTO? {
+    fun loadFilms(search: Long): FilmsDTO? {
         try {
-            val uri = URL ("https://api.kinopoisk.dev/movie?search=${search}&field=id&token=1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82") // что нужно передать в API
+
+            val uri = URL ("https://api.kinopoisk.dev/movie?search=${search}&field=id&token=$API_KEY") // что нужно передать в API
+
+
             lateinit var urlConnection: HttpsURLConnection
             try {
                 urlConnection = uri.openConnection() as HttpsURLConnection
                 urlConnection.requestMethod = "GET"
+
                 // TOKEN
-               /* urlConnection.addRequestProperty(
-                    "token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
-                )*/
+                //urlConnection.addRequestProperty("token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82")
+
                 urlConnection.readTimeout = 10000
                 val bufferedReader = BufferedReader(InputStreamReader(urlConnection.inputStream))
                 // преобразование ответа от сервера (JSON) в модель данных (FilmsDTO)

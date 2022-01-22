@@ -4,10 +4,10 @@ import com.geekbrains.december.model.entities.DataFilms
 
 interface Repository {
 
-    fun getMovieFromServer(search: Int): DataFilms
+    fun getMovieFromServer(search: Long): DataFilms
 
-    fun getMovieFromLocalStorageRus(): MutableList<DataFilms>
+    fun getMovieFromLocalStorageRus(): List<DataFilms>
 
-    fun getMovieFromLocalStorageWorld(): MutableList<DataFilms>
+    fun getMovieFromLocalStorageWorld(): List<DataFilms>
 
 }

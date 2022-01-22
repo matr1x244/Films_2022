@@ -5,8 +5,9 @@ import com.geekbrains.december.model.entities.*
 
 class RepositoryIpml: Repository {
 
-    override fun getMovieFromServer(search: Int) : DataFilms {
+    override fun getMovieFromServer(search: Long) : DataFilms {
 
+        //запускаем загружчик и что нужно
         val dto = FilmsLoader.loadFilms(search)
 
         return DataFilms(

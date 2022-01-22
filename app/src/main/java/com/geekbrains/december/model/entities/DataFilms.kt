@@ -9,7 +9,7 @@ data class DataFilms(
 
     val dataMovie: DataMovie = getDefaultFilms(),
     var poster: Int = R.drawable.serials,
-    val id: Int = 0,
+    val id: Long = 0,
     var name: String? = "name",
     var rating_kinopoisk: String = "rating_kinopoisk",
     var year: Int = 0,
@@ -26,19 +26,13 @@ fun getDefaultFilms() = DataMovie(R.drawable.serials,
     325
 )
 
-fun getWorldFilms() = mutableListOf( // не верно отображает иконку poster_path !!!!
+fun getWorldFilms() = listOf( // не верно отображает иконку poster_path !!!!
 
         DataFilms(DataMovie(R.drawable.serials,326,"Побег из Шоушенка 1","1.0",2050,"Это описание фильма #3",326))
     )
 
-fun getRussianFilms() = mutableListOf(
+fun getRussianFilms() = listOf(
 
     DataFilms(DataMovie(
-        R.drawable.serials,
-        326,
-        "Крик ужаса",
-        "1.0",
-        1958,
-        "Банда террористов объявила, что в пассажирском самолёте заложена бомба.  Чтобы получить требуемый выкуп в полмиллиона долларов, преступники похитили семью инженера, разработавшего взрывное устройство.",
-        326))
+        R.drawable.serials,326,"Крик ужаса","1.0",1958,"Банда террористов объявила, что в пассажирском самолёте заложена бомба.",326))
     )

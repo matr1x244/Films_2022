@@ -14,7 +14,7 @@ class DetailsViewModel (private val repository: Repository) : ViewModel() {
             return localLiveData
         }
 
-    fun loadData(search: Int) {
+    fun loadData(search: Long) {
         localLiveData.value = AppState.Loading
         Thread {
             val data = repository.getMovieFromServer(search)
