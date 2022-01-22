@@ -11,9 +11,9 @@ class RepositoryIpml: Repository {
         val dto = FilmsLoader.loadFilms(search)
 
         return DataFilms(
-            name = dto?.movies?.name,
-            year = dto?.movies?.year?: 0,
-            description = dto?.movies?.description
+            name = dto?.name,
+            year = dto?.year?: 0,
+            description = dto?.description
         )
     }
 

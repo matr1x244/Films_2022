@@ -2,7 +2,7 @@ package com.geekbrains.december.model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.geekbrains.december.model.entities.rest_entities.FilmsDTO
+import com.geekbrains.december.model.entities.rest_entities.MovieDTO
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -14,7 +14,7 @@ import javax.net.ssl.HttpsURLConnection
 private const val API_KEY = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
 
 object FilmsLoader {
-    fun loadFilms(search: Long): FilmsDTO? {
+    fun loadFilms(search: Long): MovieDTO? {
         try {
 
             val uri = URL ("https://api.kinopoisk.dev/movie?search=${search}&field=id&token=$API_KEY") // что нужно передать в API
@@ -36,7 +36,7 @@ object FilmsLoader {
                 } else {
                     getLines(bufferedReader)
                 }
-                return Gson().fromJson(lines, FilmsDTO::class.java)
+                return Gson().fromJson(lines, MovieDTO::class.java)
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {

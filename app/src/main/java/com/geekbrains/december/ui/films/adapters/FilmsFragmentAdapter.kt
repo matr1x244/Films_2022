@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.december.R
 import com.geekbrains.december.databinding.CardviewMovieBinding
+import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.ui.films.main.FilmsFragment
 
@@ -15,7 +16,7 @@ import com.geekbrains.december.ui.films.main.FilmsFragment
 
 class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemViewClickListener): RecyclerView.Adapter<FilmsFragmentAdapter.FilmsViewHolder>() {
 
-    private var filmsData: List<DataFilms> = mutableListOf()//listOf()
+    private var filmsData: List<DataFilms> = listOf()//listOf()
     private lateinit var binding: CardviewMovieBinding //задаем шаблон для отображения
 
     @SuppressLint("NotifyDataSetChanged")
@@ -55,6 +56,8 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
             listTitle.text = films.dataMovie.name
             listPopularity.text = films.dataMovie.rating_kinopoisk
             listReleaseDate.text = films.dataMovie.year.toString()
+            listSlogan.text = films.dataMovie.slogan
+
 
             root.setOnClickListener { itemClickListener.onItemViewClick(films)
                 Toast.makeText(itemView.context,"Загружаем фильм: ${listTitle.text}", Toast.LENGTH_SHORT).show()

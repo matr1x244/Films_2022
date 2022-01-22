@@ -38,7 +38,7 @@ class DetailsFragment: Fragment() {
 
                 //Что будем передавать
                 itemPoster.setImageResource(R.drawable.films)
-                //listId.text = films.id.toString()
+                listId.text = films.id.toString()
                 //listTitle.text = films.name
                 //listPopularity.text = films.rating_kinopoisk.toString()
                 //listReleaseDate.text = films.year.toString()
@@ -60,6 +60,8 @@ class DetailsFragment: Fragment() {
                             listReleaseDate.text = appState.filmsData[0].year.toString()
                             listDescription.text = appState.filmsData[0].description
 
+                           listSlogan.text = appState.filmsData[0].slogan
+
                         }
                     }
                 })
@@ -67,7 +69,6 @@ class DetailsFragment: Fragment() {
             viewModel.loadData(it.dataMovie.search)
         }
     }
-
 
 
 

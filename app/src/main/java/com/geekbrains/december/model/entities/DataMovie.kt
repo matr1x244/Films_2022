@@ -14,6 +14,7 @@ data class DataMovie(
     var rating_kinopoisk: String,
     var year: Int,
     var description: String,
+    var slogan: String,
 
     var search: Long
 

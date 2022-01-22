@@ -14,6 +14,7 @@ data class DataFilms(
     var rating_kinopoisk: String = "rating_kinopoisk",
     var year: Int = 0,
     var description: String? = "description",
+    var slogan: String? = "slogan"
 
     ) : Parcelable
 
@@ -23,16 +24,17 @@ fun getDefaultFilms() = DataMovie(R.drawable.serials,
     "99.99",
     2099,
     "Описание дефолтного фильма",
+    "Дефолтный слоган",
     325
 )
 
 fun getWorldFilms() = listOf( // не верно отображает иконку poster_path !!!!
 
-        DataFilms(DataMovie(R.drawable.serials,326,"Побег из Шоушенка 1","1.0",2050,"Это описание фильма #3",326))
+        DataFilms(DataMovie(R.drawable.serials,326,"Побег из Шоушенка 1","1.0",2050,"Это описание фильма #3","Слоган фильм ворлд",329))
     )
 
 fun getRussianFilms() = listOf(
 
     DataFilms(DataMovie(
-        R.drawable.serials,326,"Крик ужаса","1.0",1958,"Банда террористов объявила, что в пассажирском самолёте заложена бомба.",326))
+        R.drawable.serials,326,"Крик ужаса","1.0",1958,"Банда террористов объявила, что в пассажирском самолёте заложена бомба.","Слоган фильм рус",556))
     )
