@@ -21,9 +21,9 @@ object FilmsLoader {
                 urlConnection = uri.openConnection() as HttpsURLConnection
                 urlConnection.requestMethod = "GET"
                 // TOKEN
-                urlConnection.addRequestProperty(
+               /* urlConnection.addRequestProperty(
                     "token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
-                )
+                )*/
                 urlConnection.readTimeout = 10000
                 val bufferedReader = BufferedReader(InputStreamReader(urlConnection.inputStream))
                 // преобразование ответа от сервера (JSON) в модель данных (FilmsDTO)
