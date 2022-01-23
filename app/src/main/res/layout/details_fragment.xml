@@ -60,10 +60,10 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/release_date"
                 app:layout_constraintStart_toEndOf="@+id/item_poster"
-                app:layout_constraintTop_toBottomOf="@+id/list_popularity" />
+                app:layout_constraintTop_toBottomOf="@+id/list_tmdb" />
 
             <TextView
-                android:id="@+id/list_popularity"
+                android:id="@+id/list_tmdb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -77,36 +77,56 @@
                 android:id="@+id/list_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
                 android:text="@string/id"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_poster" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/list_release_date" />
 
             <TextView
                 android:id="@+id/list_slogan"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
                 android:text="@string/slogan"
-                app:layout_constraintStart_toEndOf="@+id/item_poster"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/list_release_date" />
 
-            <TextView
-                android:id="@+id/list_description"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/white"
-                android:text="@string/move_about"
+                android:layout_marginBottom="8dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:elevation="8dp"
+                android:visibility="visible"
+                app:cardCornerRadius="7dp"
+                app:cardPreventCornerOverlap="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.125"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_id" />
+                app:layout_constraintTop_toTopOf="@id/list_slogan"
+                app:layout_constraintVertical_bias="0.397">
+
+                <TextView
+                    android:id="@+id/list_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#FDF9F9"
+                    android:justificationMode="inter_word"
+                    android:text="@string/move_about"
+                    android:textColor="@color/black" />
+
+            </androidx.cardview.widget.CardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,7 +137,7 @@
         android:id="@+id/filmsGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="list_slogan,list_description,list_id,@+id/item_poster,list_title,list_popularity,list_release_date"
+        app:constraint_referenced_ids="list_slogan,list_description,list_id,item_poster,list_title,list_tmdb,list_release_date"
         tools:ignore="NotSibling" />
 
 

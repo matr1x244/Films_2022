@@ -9,15 +9,12 @@ import kotlinx.parcelize.Parcelize
 data class DataMovie(
 
     var poster: Int,
-    val id: Long,
+    val id: Int,
     var name: String,
-    var rating_kinopoisk: String,
+    var tmdb: Double,
     var year: Int,
     var description: String,
     var slogan: String,
-
-    var search: Long
-
 
 ) : Parcelable
 

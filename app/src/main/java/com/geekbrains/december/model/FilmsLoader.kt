@@ -14,10 +14,10 @@ import javax.net.ssl.HttpsURLConnection
 private const val API_KEY = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
 
 object FilmsLoader {
-    fun loadFilms(search: Long): MovieDTO? {
+    fun loadFilms(id: Int): MovieDTO? {
         try {
 
-            val uri = URL ("https://api.kinopoisk.dev/movie?search=${search}&field=id&token=$API_KEY") // что нужно передать в API
+            val uri = URL ("https://api.kinopoisk.dev/movie?search=${id}&field=id&token=$API_KEY") // что нужно передать в API
 
 
             lateinit var urlConnection: HttpsURLConnection
@@ -28,7 +28,7 @@ object FilmsLoader {
                 // TOKEN
                 //urlConnection.addRequestProperty("token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82")
 
-                urlConnection.readTimeout = 10000
+                urlConnection.readTimeout = 1000
                 val bufferedReader = BufferedReader(InputStreamReader(urlConnection.inputStream))
                 // преобразование ответа от сервера (JSON) в модель данных (FilmsDTO)
                 val lines = if(Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {

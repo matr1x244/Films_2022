@@ -38,7 +38,7 @@ class DetailsFragment: Fragment() {
 
                 //Что будем передавать
                 itemPoster.setImageResource(R.drawable.films)
-                listId.text = films.id.toString()
+                //listId.text = films.id.toString()
                 //listTitle.text = films.name
                 //listPopularity.text = films.rating_kinopoisk.toString()
                 //listReleaseDate.text = films.year.toString()
@@ -56,17 +56,18 @@ class DetailsFragment: Fragment() {
                         is AppState.Success -> {
                             detailsFragment.visibility = View.VISIBLE
                             /*ЧТО НУЖНО ЗАБРАТЬ И ПОКАЗАТЬ С API прогрузить в поля*/
+                            listId.text = appState.filmsData[0].id.toString()
                             listTitle.text = appState.filmsData[0].name
+                            listTmdb.text = appState.filmsData[0].tmdb.toString() // НЕ ПРОГРУЖАЕТ!!!
                             listReleaseDate.text = appState.filmsData[0].year.toString()
                             listDescription.text = appState.filmsData[0].description
-
-                           listSlogan.text = appState.filmsData[0].slogan
+                            listSlogan.text = appState.filmsData[0].slogan
 
                         }
                     }
                 })
             }
-            viewModel.loadData(it.dataMovie.search)
+            viewModel.loadData(it.dataMovie.id)
         }
     }
 

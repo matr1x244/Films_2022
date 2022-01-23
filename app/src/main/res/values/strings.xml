@@ -8,11 +8,11 @@
     <string name="release_date">Дата выпуска</string>
     <string name="id">ID фильма</string>
     <string name="move_about">О видео</string>
+    <string name="slogan">Слоган</string>
 
     <!--Кнопка переключения-->
     <string name="change_films_list">Изменить список фильмов</string>
     <string name="title_details_fragment">DetailsFragment</string>
-    <string name="slogan">Слоган</string>
     <string name="error">Ошибка</string>
     <string name="reload">Перезагрузить</string>
     <!--Кнопка переключения-->

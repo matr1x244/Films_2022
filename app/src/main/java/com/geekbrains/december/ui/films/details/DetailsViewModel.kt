@@ -14,10 +14,10 @@ class DetailsViewModel (private val repository: Repository) : ViewModel() {
             return localLiveData
         }
 
-    fun loadData(search: Long) {
+    fun loadData(id: Int) {
         localLiveData.value = AppState.Loading
         Thread {
-            val data = repository.getMovieFromServer(search)
+            val data = repository.getMovieFromServer(id)
             localLiveData.postValue(AppState.Success(listOf(data)))
         }.start()
     }

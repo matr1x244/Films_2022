@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.december.R
 import com.geekbrains.december.databinding.CardviewMovieBinding
-import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.ui.films.main.FilmsFragment
 
@@ -54,7 +53,7 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
             itemPoster.setImageResource(R.drawable.films) // ??? Надо разобраться как передать разные постеры
             listId.text = films.dataMovie.id.toString()
             listTitle.text = films.dataMovie.name
-            listPopularity.text = films.dataMovie.rating_kinopoisk
+            listTmdb.text = films.dataMovie.tmdb.toString()
             listReleaseDate.text = films.dataMovie.year.toString()
             listSlogan.text = films.dataMovie.slogan
 
