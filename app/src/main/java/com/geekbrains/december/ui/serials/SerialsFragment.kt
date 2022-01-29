@@ -8,39 +8,48 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import com.geekbrains.december.R
+import com.geekbrains.december.Service.MyForegroundService
 import com.geekbrains.december.databinding.FragmentSerialsBinding
+import com.geekbrains.december.model.AppState
+import com.geekbrains.december.model.entities.DataFilms
+import com.geekbrains.december.model.entities.showSnackBarAction
+import com.geekbrains.december.model.entities.showSnackBarNoAction
+import com.geekbrains.december.ui.films.adapters.FilmsFragmentAdapter
+import com.geekbrains.december.ui.films.details.DetailsFragment
+import com.geekbrains.december.ui.films.main.FilmsFragment
+import com.geekbrains.december.ui.films.main.FilmsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class SerialsFragment : Fragment(){
 
-    private lateinit var serialsViewModel: SerialsViewModel
+    private val viewModel: SerialsViewModel by viewModel()
 
-    private var _binding: FragmentSerialsBinding? = null  // надо более подробно разобраться страница 16 методички № 2
-    private val binding get() = _binding!! // надо более подробно разобраться страница 16 методички № 2
-
+    private var _binding: FragmentSerialsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        serialsViewModel = ViewModelProvider(this).get(SerialsViewModel::class.java)
-
         _binding = FragmentSerialsBinding.inflate(inflater, container, false)
-        val root: View = binding.root // надо более подробно разобраться страница 16 методички № 2
-
-
-        /*Стандартный метод который забирает даныне из viewmodel с текстом*/
-        val textView: TextView = binding.textDashboard
-        serialsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-
-        return root
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding){
+
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
+
 }
 
 

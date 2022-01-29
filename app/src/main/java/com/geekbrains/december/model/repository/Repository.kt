@@ -4,10 +4,8 @@ import com.geekbrains.december.model.entities.DataFilms
 
 interface Repository {
 
-    fun getMovieFromServer(id: Int): DataFilms
+    fun getMovieFromServer(id: Int): DataFilms //передаем ID фильма
 
-    fun getMovieFromLocalStorageRus(): List<DataFilms>
-
-    fun getMovieFromLocalStorageWorld(): List<DataFilms>
+    fun getMovieFromServerTrends(): List<DataFilms>
 
 }

@@ -32,18 +32,8 @@ class DetailsFragment: Fragment() {
 
         arguments?.getParcelable<DataFilms>(BUNDLE_EXTRA)?.let {
             with(binding) {
-
                 //Передаем данные в detailFragment
-                val films = it.dataMovie
-
-                //Что будем передавать
                 itemPoster.setImageResource(R.drawable.films)
-                //listId.text = films.id.toString()
-                //listTitle.text = films.name
-                //listPopularity.text = films.rating_kinopoisk.toString()
-                //listReleaseDate.text = films.year.toString()
-                //listDescription.text = films.description
-                //listSearch.text = films.search.toString()
 
                 viewModel.filmsLiveData.observe(viewLifecycleOwner, { appState ->
                     when (appState) {
@@ -55,23 +45,20 @@ class DetailsFragment: Fragment() {
                         }
                         is AppState.Success -> {
                             detailsFragment.visibility = View.VISIBLE
-                            /*ЧТО НУЖНО ЗАБРАТЬ И ПОКАЗАТЬ С API прогрузить в поля*/
+                            //ЧТО НУЖНО ЗАБРАТЬ И ПОКАЗАТЬ С API прогрузить в поля
                             listId.text = appState.filmsData[0].id.toString()
                             listTitle.text = appState.filmsData[0].name
                             listTmdb.text = appState.filmsData[0].tmdb.toString() // НЕ ПРОГРУЖАЕТ!!!
                             listReleaseDate.text = appState.filmsData[0].year.toString()
                             listDescription.text = appState.filmsData[0].description
                             listSlogan.text = appState.filmsData[0].slogan
-
                         }
                     }
                 })
             }
-            viewModel.loadData(it.dataMovie.id)
+            viewModel.loadData(it.id)
         }
     }
-
-
 
         override fun onDestroyView() {
             super.onDestroyView()

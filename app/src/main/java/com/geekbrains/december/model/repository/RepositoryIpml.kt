@@ -1,28 +1,41 @@
 package com.geekbrains.december.model.repository
 
-import com.geekbrains.december.model.FilmsLoader
+import com.geekbrains.december.model.FilmsLoaderDetails
+import com.geekbrains.december.model.FilmsLoaderRecycle
 import com.geekbrains.december.model.entities.*
 
 class RepositoryIpml: Repository {
 
-    override fun getMovieFromServer(id: Int) : DataFilms {
-
+    /*ПЕРЕДАЕМ ДЕТАЛИ по фильму*/
+    override fun getMovieFromServer(id: Int): DataFilms {
         //запускаем загружчик и что нужно показать
-        val dto = FilmsLoader.loadFilms(id)
-
+        val dto = FilmsLoaderDetails.loadFilmsDetails(id)
         return DataFilms(
-
-            id = dto?.id?: 0,
+            id = dto?.id ?: 0,
             name = dto?.name,
-            year = dto?.year?: 0,
+            year = dto?.year ?: 0,
+            tmdb = dto?.tmbd ?: 0.0, // НЕ ПРОГРУЖАЕТ..
             description = dto?.description,
-            slogan = dto?.slogan,
-            tmdb = dto?.tmbd?: 0.0 // НЕ ПРОГРУЖАЕТ..
+            slogan = dto?.slogan
         )
     }
 
-    override fun getMovieFromLocalStorageRus() = getRussianFilms()
-
-    override fun getMovieFromLocalStorageWorld() = getWorldFilms()
-
+    /*Список*/
+    override fun getMovieFromServerTrends(): List <DataFilms> {
+        val dtoTrendsServer = FilmsLoaderRecycle.loadFilmsRecycle()?.docs
+        val listMovieTrends = mutableListOf<DataFilms>()
+        dtoTrendsServer?.forEach {
+            listMovieTrends.add(
+                DataFilms(
+                    id = it?.id?: 0,
+                    name = it.name,
+                    year = it?.year?: 0,
+                    tmdb = it?.tmbd?: 0.0, // НЕ ПРОГРУЖАЕТ..
+                    slogan = it?.slogan // - почему то не сетит в reycleview слоган..
+                )
+            )
+        }
+        return listMovieTrends
+    }
 }
+

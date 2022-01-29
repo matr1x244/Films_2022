@@ -1,14 +1,13 @@
 package com.geekbrains.december.ui.serials
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.lang.Thread.sleep
+import com.geekbrains.december.model.repository.Repository
 
-class SerialsViewModel() : ViewModel() {
 
-     private val textView = MutableLiveData<String>().apply {
-        value = "СЕРИАЛЫ ТЕСТОВАЯ НАДПИСЬ"
+class SerialsViewModel(private val repository: Repository) : ViewModel() {
+
+    override fun onCleared() {
+        super.onCleared()
     }
-        val text: LiveData<String> = textView
 }
+

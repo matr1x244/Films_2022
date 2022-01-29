@@ -15,16 +15,19 @@ import com.geekbrains.december.ui.films.main.FilmsFragment
 
 class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemViewClickListener): RecyclerView.Adapter<FilmsFragmentAdapter.FilmsViewHolder>() {
 
-    private var filmsData: List<DataFilms> = listOf()//listOf()
+    private val movieList: MutableList<DataFilms> = ArrayList() // задаем что отображать
     private lateinit var binding: CardviewMovieBinding //задаем шаблон для отображения
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setFilms(data: List<DataFilms>) {
-        filmsData = data
+    fun setFilms(newMovieList: List<DataFilms>) {
+        movieList.clear()
+        movieList.addAll(newMovieList)
+
         //По обновлению данных в recyclerView очень рекомендую освоить DiffUtil:
         // https://www.raywenderlich.com/21954410-speed-up-your-android-recyclerview-using-diffutil -
         // это один из самых оптимальных механизмов, позволяет не перерисовывать все данные,
         // как это делается например при использовании !notifyDatasetChanged!
+
         notifyDataSetChanged()
 
     }
@@ -38,25 +41,22 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
 
     //Загружает данные в указанной позиции в представления, ссылки на которые хранятся в заданном заполнителе представления
     override fun onBindViewHolder(holderFilms: FilmsViewHolder, position: Int) {
-        holderFilms.bind(filmsData[position])
+        holderFilms.bind(movieList[position])
     }
 
     // создаём размер и возвращаем его
-    override fun getItemCount() = filmsData.size
-
+    override fun getItemCount() = movieList.size
 
     inner class FilmsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         fun bind(films: DataFilms) = with(binding) {
 
             /*Какие данные передаем в recycleview*/
             itemPoster.setImageResource(R.drawable.films) // ??? Надо разобраться как передать разные постеры
-            listId.text = films.dataMovie.id.toString()
-            listTitle.text = films.dataMovie.name
-            listTmdb.text = films.dataMovie.tmdb.toString()
-            listReleaseDate.text = films.dataMovie.year.toString()
-            listSlogan.text = films.dataMovie.slogan
-
+            listId.text = films.id.toString() // ID
+            listTitle.text = films.name // Название
+            listTmdb.text = films.tmdb.toString() // Рейтинг
+            listReleaseDate.text = films.year.toString() // Год релиза
+            listSlogan.text = films.slogan // Слоган // - почему то не сетит в reycleview слоган..
 
             root.setOnClickListener { itemClickListener.onItemViewClick(films)
                 Toast.makeText(itemView.context,"Загружаем фильм: ${listTitle.text}", Toast.LENGTH_SHORT).show()

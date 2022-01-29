@@ -1,12 +1,19 @@
 package com.geekbrains.december.model.entities.rest_entities
 
-data class MovieDTO(
+
+data class MovieTrendsDTO (
+
+    val docs: Array<Docs>
+)
+
+data class Docs(
 
     val id: Int?,
     val name: String?,
     val year: Int?,
+    val tmbd: Double?,
     val description: String?,
-    val slogan: String?,
-    val tmbd: Double?
-
+    val slogan: String?
 )
+
+
