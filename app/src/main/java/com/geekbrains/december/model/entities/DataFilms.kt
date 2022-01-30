@@ -6,7 +6,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class DataFilms(
-    var poster: Int = R.drawable.serials,
+
+    var poster: String? = "",
     val id: Int = 0,
     var name: String? = "name",
     var tmdb: Double = 0.0,
@@ -15,11 +16,11 @@ data class DataFilms(
     var slogan: String? = "slogan"
     ) : Parcelable
 
-fun getMovieServers() : List<DataFilms>{
+/*fun getMovieServers() : List<DataFilms>{
     return listOf()
 }
 
 fun getRussianFilms() : List<DataFilms>{
     return listOf()
-}
+}*/
 

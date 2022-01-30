@@ -12,20 +12,22 @@ import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
 
 private const val API_KEY = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
-private const val YEAR_FILMS = "2018"
-private const val SEARCH_PAGE = "5-11"
+private const val YEAR_FILMS = "2021"
+private const val SEARCH_PAGE = "6-9"
 
-object FilmsLoaderRecycle {
-    fun loadFilmsRecycle(): MovieTrendsDTO? {
+/*Список для перезагрузки ТЕСТ при прокручивании*/
+object FilmsLoaderRecycleReload {
+    fun loadFilmsRecycleReload(): MovieTrendsDTO? {
         try {
-            val uri = URL("https://api.kinopoisk.dev/movie?field=rating.kp&search=${SEARCH_PAGE}&field=year&search=${YEAR_FILMS}&sortField=year&sortType=1&token=${API_KEY}")
+            val uri =
+                URL("https://api.kinopoisk.dev/movie?field=rating.kp&search=${SEARCH_PAGE}&field=year&search=${YEAR_FILMS}&sortField=year&sortType=1&token=${API_KEY}")
             lateinit var urlConnection: HttpsURLConnection
-            try{
+            try {
                 urlConnection = uri.openConnection() as HttpsURLConnection
                 urlConnection.requestMethod = "GET"
                 urlConnection.readTimeout = 10000
                 val bufferedReader = BufferedReader(InputStreamReader(urlConnection.inputStream))
-                val lines = if(Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                val lines = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                     getLinesForOld(bufferedReader)
                 } else {
                     getLines(bufferedReader)
@@ -59,3 +61,4 @@ object FilmsLoaderRecycle {
         return reader.lines().collect(Collectors.joining("\n"))
     }
 }
+

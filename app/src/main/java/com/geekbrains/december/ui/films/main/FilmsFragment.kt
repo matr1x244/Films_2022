@@ -139,7 +139,13 @@ class FilmsFragment : Fragment() {
                                 .addToBackStack("")
                                 .commitAllowingStateLoss()*/
                         }
+
                     }
+                    /*Обновляем recycleview если подходим к концу*/
+                    override fun onDataEnd(from: Int, sizeToRequest: Int) {
+                        viewModel.getMoreMovies(from, sizeToRequest)
+                    }
+
                 }).apply { setFilms(appState.filmsData) }
                 FilmsFragmentRecyclerView.adapter = adapter
             }
@@ -156,6 +162,7 @@ class FilmsFragment : Fragment() {
 
     interface OnItemViewClickListener {
         fun onItemViewClick(films: DataFilms)
+        fun onDataEnd(from: Int, sizeToRequest: Int)
     }
 
     companion object{

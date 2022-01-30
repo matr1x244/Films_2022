@@ -18,6 +18,7 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
     private val movieList: MutableList<DataFilms> = ArrayList() // задаем что отображать
     private lateinit var binding: CardviewMovieBinding //задаем шаблон для отображения
 
+    // сетим лист фильмов
     @SuppressLint("NotifyDataSetChanged")
     fun setFilms(newMovieList: List<DataFilms>) {
         movieList.clear()
@@ -42,6 +43,11 @@ class FilmsFragmentAdapter(private val itemClickListener: FilmsFragment.OnItemVi
     //Загружает данные в указанной позиции в представления, ссылки на которые хранятся в заданном заполнителе представления
     override fun onBindViewHolder(holderFilms: FilmsViewHolder, position: Int) {
         holderFilms.bind(movieList[position])
+        /*Список для перезагрузки ТЕСТ при прокручивании*/
+        if (position == movieList.size - 1){
+            itemClickListener.onDataEnd(movieList.size + 1, sizeToRequest = 10)
+        }
+        /*Список для перезагрузки ТЕСТ при прокручивании*/
     }
 
     // создаём размер и возвращаем его

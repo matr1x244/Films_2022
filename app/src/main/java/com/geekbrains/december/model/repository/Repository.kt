@@ -8,4 +8,7 @@ interface Repository {
 
     fun getMovieFromServerTrends(): List<DataFilms>
 
+    /*Список для перезагрузки ТЕСТ при прокручивании*/
+    fun getMovieFromServerTrendsReload(): List<DataFilms>
+
 }

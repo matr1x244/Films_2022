@@ -27,6 +27,19 @@ class FilmsViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
+    /*Список для перезагрузки ТЕСТ при прокручивании*/
+    fun getMoreMovies(from: Int, sizeToRequest: Int){
+
+        repository.getMovieFromServerTrendsReload()
+
+        liveData.value = AppState.Loading
+        //корутины без использования Thread
+        viewModelScope.launch(Dispatchers.IO) {
+            liveData.postValue(AppState.Success(repository.getMovieFromServerTrendsReload()))
+        }
+    }
+    /*Список для перезагрузки ТЕСТ при прокручивании*/
+
     override fun onCleared() {
         super.onCleared()
     }
