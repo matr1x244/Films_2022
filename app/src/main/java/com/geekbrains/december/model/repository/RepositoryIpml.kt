@@ -147,7 +147,7 @@ class RepositoryIpml: Repository {
     }
 
     private fun convertMovieToEntity(dataFilms: DataFilms): HistoryEntity {
-        return HistoryEntity(id = 0, name = "NAMEFILMS")
+        return HistoryEntity(0,dataFilms.name)
     }
     /**
      * Для базы данных
