@@ -8,13 +8,21 @@
     <string name="release_date">Дата выпуска</string>
     <string name="id">ID фильма</string>
     <string name="move_about">О видео</string>
+    <string name="type">Тип</string>
     <string name="slogan">Слоган</string>
+
+    <!--Фрагмент детали-->
+    <string name="title_details_fragment">О видео</string>
 
     <!--Кнопка переключения-->
     <string name="change_films_list">Изменить список фильмов</string>
-    <string name="title_details_fragment">DetailsFragment</string>
+
     <string name="error">Ошибка</string>
     <string name="reload">Перезагрузить</string>
+    <string name="info_tx_year">Дата премьеры:</string>
+    <string name="info_tx_raiting">Рейтинг видео:</string>
+    <string name="checkbox_serials_filter">Показывать сериалы</string>
+    <string name="genres">Тип</string>
     <!--Кнопка переключения-->
 
 </resources>

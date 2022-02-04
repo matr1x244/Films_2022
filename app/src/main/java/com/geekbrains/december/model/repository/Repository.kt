@@ -4,11 +4,23 @@ import com.geekbrains.december.model.entities.DataFilms
 
 interface Repository {
 
-    fun getMovieFromServer(id: Int): DataFilms //передаем ID фильма
+    fun getMovieFromServerDetail(id: Int?): DataFilms //передаем ID фильма
 
-    fun getMovieFromServerTrends(): List<DataFilms>
+    fun getMovieFromServerFilms(): List<DataFilms>
 
-    /*Список для перезагрузки ТЕСТ при прокручивании*/
-    fun getMovieFromServerTrendsReload(): List<DataFilms>
+    fun getMovieFromServerSerials() : List<DataFilms>
+
+    /**
+     * Для базы данных
+     */
+    fun getAllHistory(): List<DataFilms>
+    fun saveEntity(dataFilms: DataFilms)
+
+    /**
+     * Список для перезагрузки ТЕСТ при прокручивании
+     */
+
+    fun getMovieFromServerFilmsReload(): List<DataFilms>
+
 
 }

@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit
 //https://api.kinopoisk.dev/movie?search=320&field=id&token=1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82
 
 object ApiUtils {
-    private val baseUrlMainPart = "https://api.kinopoisk.dev/movie?"
-    //private val baseUrlVersion = "search=&field=id"
+    private val baseUrlMainPart = "https://api.kinopoisk.dev/"
+    //private val baseUrlVersion = "field=id"
     val baseUrl = "$baseUrlMainPart"
 
     fun getOkHTTPBuilderWithHeaders(): OkHttpClient {
@@ -18,8 +18,7 @@ object ApiUtils {
         httpClient.addInterceptor { chain ->
             val original = chain.request()
             val request = original.newBuilder()
-                .header("field","id")
-                .header("token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82")
+                //.header("token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82")
                 .method(original.method(), original.body())
                 .build()
 

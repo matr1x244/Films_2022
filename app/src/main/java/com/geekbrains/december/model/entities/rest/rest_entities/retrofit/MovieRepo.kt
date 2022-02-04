@@ -14,4 +14,5 @@ object MovieRepo {
 
         adapter.create(MovieAPI::class.java)
     }
+
 }

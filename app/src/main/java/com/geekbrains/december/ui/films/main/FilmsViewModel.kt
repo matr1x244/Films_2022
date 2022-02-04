@@ -7,7 +7,6 @@ import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Thread.sleep
 
 
 class FilmsViewModel(private val repository: Repository) : ViewModel() {
@@ -21,21 +20,26 @@ class FilmsViewModel(private val repository: Repository) : ViewModel() {
     private fun getDataFromLoad() {
 
         liveData.value = AppState.Loading
-        /*корутины без использования Thread*/
+         /**
+         * корутины без использования Thread
+         */
         viewModelScope.launch(Dispatchers.IO) {
-            liveData.postValue(AppState.Success(repository.getMovieFromServerTrends()))
+            liveData.postValue(AppState.Success(repository.getMovieFromServerFilms()))
         }
     }
+
 
     /*Список для перезагрузки ТЕСТ при прокручивании*/
     fun getMoreMovies(from: Int, sizeToRequest: Int){
 
-        repository.getMovieFromServerTrendsReload()
+        //repository.getMovieFromServerFilmsReload()
 
         liveData.value = AppState.Loading
-        //корутины без использования Thread
+        /**
+         * корутины без использования Thread
+         */
         viewModelScope.launch(Dispatchers.IO) {
-            liveData.postValue(AppState.Success(repository.getMovieFromServerTrendsReload()))
+            liveData.postValue(AppState.Success(repository.getMovieFromServerFilmsReload()))
         }
     }
     /*Список для перезагрузки ТЕСТ при прокручивании*/

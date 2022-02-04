@@ -21,5 +21,10 @@
         android:title="@string/title_setting"
         app:showAsAction="collapseActionView" />
 
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/setting_svg"
+        android:title="history"
+        app:showAsAction="collapseActionView" />
 
 </menu>

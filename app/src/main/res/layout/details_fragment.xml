@@ -53,14 +53,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/info_tx_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/info_tx_year"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
+                app:layout_constraintTop_toTopOf="@+id/list_release_date" />
+
+            <TextView
                 android:id="@+id/list_release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/release_date"
-                app:layout_constraintStart_toEndOf="@+id/item_poster"
+                app:layout_constraintStart_toEndOf="@+id/info_tx_year"
                 app:layout_constraintTop_toBottomOf="@+id/list_tmdb" />
+
+            <TextView
+                android:id="@+id/info_tx_raiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/info_tx_raiting"
+                app:layout_constraintBottom_toTopOf="@+id/info_tx_year"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
+                app:layout_constraintTop_toBottomOf="@+id/list_title" />
 
             <TextView
                 android:id="@+id/list_tmdb"
@@ -70,7 +89,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/default_popularity"
                 android:textColor="#455A64"
-                app:layout_constraintStart_toEndOf="@+id/item_poster"
+                app:layout_constraintStart_toEndOf="@+id/info_tx_raiting"
                 app:layout_constraintTop_toBottomOf="@+id/list_title" />
 
             <TextView
@@ -80,22 +99,32 @@
                 android:layout_marginEnd="24dp"
                 android:text="@string/id"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/list_release_date" />
+                app:layout_constraintTop_toTopOf="@+id/list_tmdb" />
+
+            <TextView
+                android:id="@+id/listbudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text=""
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/list_slogan" />
 
             <TextView
                 android:id="@+id/list_slogan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:text="@string/slogan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_release_date" />
+                app:layout_constraintTop_toBottomOf="@+id/item_poster" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -120,11 +149,12 @@
                 <TextView
                     android:id="@+id/list_description"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="#FDF9F9"
                     android:justificationMode="inter_word"
                     android:text="@string/move_about"
                     android:textColor="@color/black" />
+
 
             </androidx.cardview.widget.CardView>
 

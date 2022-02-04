@@ -2,7 +2,7 @@ package com.geekbrains.december.model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.geekbrains.december.model.entities.rest.rest_entities.MovieTrendsDTO
+import com.geekbrains.december.model.entities.rest.rest_entities.MovieLoadDTO
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -17,7 +17,7 @@ private const val SEARCH_PAGE = "6-9"
 
 /*Список для перезагрузки ТЕСТ при прокручивании*/
 object FilmsLoaderRecycleReload {
-    fun loadFilmsRecycleReload(): MovieTrendsDTO? {
+    fun loadFilmsRecycleReload(): MovieLoadDTO? {
         try {
             val uri =
                 URL("https://api.kinopoisk.dev/movie?field=rating.kp&search=${SEARCH_PAGE}&field=year&search=${YEAR_FILMS}&sortField=year&sortType=1&token=${API_KEY}")
@@ -32,7 +32,7 @@ object FilmsLoaderRecycleReload {
                 } else {
                     getLines(bufferedReader)
                 }
-                return Gson().fromJson(lines, MovieTrendsDTO::class.java)
+                return Gson().fromJson(lines, MovieLoadDTO::class.java)
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {

@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Service.MyForegroundService"/>
+<!--        <service android:name=".Service.MyForegroundService"/>
         <service android:name=".Service.BoundService"></service>
 
         <receiver android:name=".receivers.MainBroadcastReceiver"
@@ -33,7 +33,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.LOCALE_CHANGED" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
     </application>
 

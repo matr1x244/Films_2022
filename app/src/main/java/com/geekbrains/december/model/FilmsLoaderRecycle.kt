@@ -2,7 +2,7 @@ package com.geekbrains.december.model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.geekbrains.december.model.entities.rest.rest_entities.MovieTrendsDTO
+import com.geekbrains.december.model.entities.rest.rest_entities.MovieLoadDTO
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -16,7 +16,7 @@ private const val YEAR_FILMS = "2018"
 private const val SEARCH_PAGE = "5-11"
 
 object FilmsLoaderRecycle {
-    fun loadFilmsRecycle(): MovieTrendsDTO? {
+    fun loadFilmsRecycle(): MovieLoadDTO? {
         try {
             val uri = URL("https://api.kinopoisk.dev/movie?field=rating.kp&search=${SEARCH_PAGE}&field=year&search=${YEAR_FILMS}&sortField=year&sortType=1&token=${API_KEY}")
             lateinit var urlConnection: HttpsURLConnection
@@ -30,7 +30,7 @@ object FilmsLoaderRecycle {
                 } else {
                     getLines(bufferedReader)
                 }
-                return Gson().fromJson(lines, MovieTrendsDTO::class.java)
+                return Gson().fromJson(lines, MovieLoadDTO::class.java)
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {

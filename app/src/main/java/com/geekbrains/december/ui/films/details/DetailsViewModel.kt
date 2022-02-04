@@ -19,21 +19,18 @@ class DetailsViewModel (private val repository: Repository) : ViewModel() {
             return localLiveData
         }
 
-    fun loadData(id: Int) {
+    fun loadData(id: Int?) {
         localLiveData.value = AppState.Loading
-        /*корутины без использования Thread*/
+         /**
+         * корутины без использования Thread
+         */
         viewModelScope.launch(Dispatchers.IO){
-            val data = repository.getMovieFromServer(id) // берем в потоке id
+            val data = repository.getMovieFromServerDetail(id) // берем в потоке id
+            //repository.saveEntity(data) // База данных истории
             withContext(Dispatchers.Main){
                 localLiveData.value = (AppState.Success(listOf(data))) // записываем в livedata "value) данные
             }
         }
-
-/*        Thread {
-            val data = repository.getMovieFromServer(id) // берем в потоке id
-            localLiveData.postValue(AppState.Success(listOf(data))) // записываем в livedata "postvalue) данные
-        }.start()*/
-
     }
 }
 

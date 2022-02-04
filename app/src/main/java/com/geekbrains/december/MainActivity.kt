@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_films,
                 R.id.navigation_serials,
-                R.id.navigation_setting
+                R.id.navigation_setting,
+                R.id.navigation_history
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

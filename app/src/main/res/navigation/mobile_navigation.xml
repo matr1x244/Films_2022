@@ -19,7 +19,11 @@
         android:id="@+id/navigation_serials"
         android:name="com.geekbrains.december.ui.serials.SerialsFragment"
         android:label="@string/title_serials"
-        tools:layout="@layout/fragment_serials" />
+        tools:layout="@layout/fragment_serials" >
+        <action
+            android:id="@+id/action_navigation_serials_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_setting"
@@ -35,5 +39,12 @@
             android:name="films"
             app:argType="com.geekbrains.december.model.entities.DataFilms" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.geekbrains.december.ui.history.HistoryFragment"
+        android:label="HISTORY"
+        tools:layout="@layout/fragment_history" />
+
 
 </navigation>

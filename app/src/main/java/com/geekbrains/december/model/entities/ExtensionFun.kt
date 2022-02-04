@@ -5,7 +5,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 
-/*Функционал View отображения SnackBack*/
+/**
+ * Функционал View отображения SnackBack
+ */
 fun View.showSnackBarAction(
         text: String,
         actionText: String,
@@ -21,9 +23,14 @@ fun View.showSnackBarNoAction(
 {
         Snackbar.make(this, text, length).show()
 }
-/*Функционал View отображения SnackBack*/
+/**
+ * Функционал View отображения SnackBack
+ */
 
-/*Функционал View отображения клавиатуры (например при вводе текста) или нажатии на кнопку*/
+/**
+ * Функционал View отображения клавиатуры (например при вводе текста) или нажатии на кнопку
+ */
+
 fun View.showKeyboard() {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         this.requestFocus()
@@ -36,4 +43,6 @@ fun View.hideKeyboard(): Boolean {
         } catch (ignored: RuntimeException) { }
         return false
 }
-/*Функционал View отображения клавиатуры (например при вводе текста) или нажатии на кнопку*/
+/**
+ * Функционал View отображения клавиатуры (например при вводе текста) или нажатии на кнопку
+ */
