@@ -1,5 +1,6 @@
 package com.geekbrains.december.model.repository
 
+import com.geekbrains.december.model.database.HistoryEntity
 import com.geekbrains.december.model.entities.DataFilms
 
 interface Repository {
@@ -14,7 +15,10 @@ interface Repository {
      * Для базы данных
      */
     fun getAllHistory(): List<DataFilms>
+
     fun saveEntity(dataFilms: DataFilms)
+
+    fun deleteEntity(): List<HistoryEntity>
 
     /**
      * Список для перезагрузки ТЕСТ при прокручивании

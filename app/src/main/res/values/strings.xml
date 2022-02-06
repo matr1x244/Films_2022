@@ -23,6 +23,8 @@
     <string name="info_tx_raiting">Рейтинг видео:</string>
     <string name="checkbox_serials_filter">Показывать сериалы</string>
     <string name="genres">Тип</string>
+    <string name="title_history_fragment">История запросов</string>
+    <string name="history">История</string>
     <!--Кнопка переключения-->
 
 </resources>

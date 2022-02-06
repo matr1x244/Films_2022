@@ -26,7 +26,9 @@ class DetailsViewModel (private val repository: Repository) : ViewModel() {
          */
         viewModelScope.launch(Dispatchers.IO){
             val data = repository.getMovieFromServerDetail(id) // берем в потоке id
-            //repository.saveEntity(data) // База данных истории
+
+            repository.saveEntity(data) // База данных истории (сохраняем когда запускаем определеннй фильм
+
             withContext(Dispatchers.Main){
                 localLiveData.value = (AppState.Success(listOf(data))) // записываем в livedata "value) данные
             }

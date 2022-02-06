@@ -43,7 +43,7 @@
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.geekbrains.december.ui.history.HistoryFragment"
-        android:label="HISTORY"
+        android:label="@string/title_history_fragment"
         tools:layout="@layout/fragment_history" />
 
 

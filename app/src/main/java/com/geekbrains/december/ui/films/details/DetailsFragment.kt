@@ -36,8 +36,6 @@ class DetailsFragment: Fragment() {
         arguments?.getParcelable<DataFilms>(BUNDLE_EXTRA)?.let {
             with(binding) {
                 //Передаем данные в detailFragment
-                //itemPoster.setImageResource(R.drawable.films)
-
                 viewModel.filmsLiveData.observe(viewLifecycleOwner) { appState ->
                     when (appState) {
                         is AppState.Error -> {
@@ -55,7 +53,6 @@ class DetailsFragment: Fragment() {
                                 precision(Precision.EXACT)
                                 error(R.drawable.ic_video)
                                 scale(Scale.FILL)}
-
                             listId.text = appState.filmsData[0].id.toString()
                             listTitle.text = appState.filmsData[0].name
                             listTmdb.text = appState.filmsData[0].imdb.toString()

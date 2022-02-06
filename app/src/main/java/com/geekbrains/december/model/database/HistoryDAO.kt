@@ -3,15 +3,16 @@ package com.geekbrains.december.model.database
 import androidx.room.*
 
 /**
- * Запросы и т.д в базу данных
+ * Запросы и т.д в базу данных (интерфейс)
  */
+
 @Dao
 interface HistoryDAO {
     @Query("SELECT * FROM HistoryEntity")
     fun all(): List<HistoryEntity>
 
-    @Query("SELECT * FROM HistoryEntity WHERE name LIKE :name")
-    fun getDataByWord(name: String): List<HistoryEntity>
+    @Query("SELECT * FROM HistoryEntity WHERE nameMovieEntity LIKE :movie")
+    fun getDataByWord(movie: String): List<HistoryEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entity: HistoryEntity)
@@ -22,6 +23,6 @@ interface HistoryDAO {
     @Delete
     fun delete(entity: HistoryEntity)
 
-    @Query("DELETE FROM HistoryEntity WHERE name = :movieName")
-    fun deleteBymMovieName(movieName: String)
+    @Query("DELETE FROM HistoryEntity WHERE idMovieEntity = :idMovie")
+    fun deleteByMovieId(idMovie: Int?)
 }

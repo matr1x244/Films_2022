@@ -1,7 +1,10 @@
 package com.geekbrains.december.model.repository
 
 
-import com.geekbrains.december.model.database.DataBase
+import android.os.AsyncTask
+import androidx.loader.content.AsyncTaskLoader
+import com.geekbrains.december.model.database.Database
+import com.geekbrains.december.model.database.HistoryDAO
 import com.geekbrains.december.model.database.HistoryEntity
 import com.geekbrains.december.model.entities.*
 import com.geekbrains.december.model.entities.rest.rest_entities.retrofit.MovieRepo
@@ -133,22 +136,43 @@ class RepositoryIpml: Repository {
      * Для базы данных
      */
     override fun getAllHistory(): List<DataFilms> {
-        return convertHistoryEntityToMovie(DataBase.db.HistoryDAO().all())
+        return convertHistoryEntityToMovie(Database.db.historyDao().all())
     }
 
     override fun saveEntity(dataFilms: DataFilms) {
-        DataBase.db.HistoryDAO().insert(convertMovieToEntity(dataFilms))
+        Database.db.historyDao().insert(convertMovieToEntity(dataFilms))
     }
+
+    /*Не работает удаление из базы данных*/
+    override fun deleteEntity(): List<HistoryEntity> {
+        AsyncTask.execute{
+            Database.db.historyDao().deleteByMovieId(0)
+        }
+        return listOf()
+    }
+    /*Не работает удаление из базы данных*/
 
     private fun convertHistoryEntityToMovie(entityList: List<HistoryEntity>): List<DataFilms> {
         return entityList.map {
-            DataFilms(it.name)
+            DataFilms(
+                 it.posterMovieEntity,
+                 it.idMovieEntity,
+                 it.nameMovieEntity,
+                 it.tmdbMovieEntity,
+                 it.yearMovieEntity)
         }
     }
 
     private fun convertMovieToEntity(dataFilms: DataFilms): HistoryEntity {
-        return HistoryEntity(0,dataFilms.name)
+        return HistoryEntity(
+            0,
+            dataFilms.name,
+            dataFilms.imdb,
+            dataFilms.year,
+            dataFilms.poster)
     }
+
+
     /**
      * Для базы данных
      */
