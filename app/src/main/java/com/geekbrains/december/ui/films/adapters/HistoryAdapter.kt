@@ -57,7 +57,7 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder
                     /*Кнопка удаления из базы данных истории фильма*/
                     imageButtonDelete.setOnClickListener {
                        imageButtonDelete.showSnackBarNoAction("CLICK DELETE")
-                        //HistoryDAO.deleteByMovieId(???)
+                        //HistoryDAO.deleteByMovieId(???) - не могу понять как вобще реализовать
                     }
                     Toast.makeText(itemView.context,"${listTitleHistory.text}", Toast.LENGTH_SHORT).show()
                 }
