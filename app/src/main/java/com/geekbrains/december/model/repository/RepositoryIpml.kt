@@ -1,6 +1,7 @@
 package com.geekbrains.december.model.repository
 
 
+import android.graphics.Movie
 import android.os.AsyncTask
 import androidx.loader.content.AsyncTaskLoader
 import com.geekbrains.december.model.database.Database
@@ -143,13 +144,13 @@ class RepositoryIpml: Repository {
         Database.db.historyDao().insert(convertMovieToEntity(dataFilms))
     }
 
+
     /*Не работает удаление из базы данных*/
-    override fun deleteEntity(): List<HistoryEntity> {
-        AsyncTask.execute{
-            Database.db.historyDao().deleteByMovieId(0)
-        }
-        return listOf()
+    override fun deleteEntity(dataFilms: DataFilms) {
+        Database.db.historyDao().deleteByMovieName(convertMovieToEntity(dataFilms).nameMovieEntity)
     }
+
+
     /*Не работает удаление из базы данных*/
 
     private fun convertHistoryEntityToMovie(entityList: List<HistoryEntity>): List<DataFilms> {
@@ -171,7 +172,6 @@ class RepositoryIpml: Repository {
             dataFilms.year,
             dataFilms.poster)
     }
-
 
     /**
      * Для базы данных

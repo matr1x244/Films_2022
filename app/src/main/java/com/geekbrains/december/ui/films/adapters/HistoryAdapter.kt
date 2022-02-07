@@ -3,25 +3,21 @@ package com.geekbrains.december.ui.films.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Precision
 import coil.size.Scale
 import com.geekbrains.december.R
 import com.geekbrains.december.databinding.CardviewMovieHistoryListBinding
-import com.geekbrains.december.model.database.HistoryDAO
-import com.geekbrains.december.model.database.HistoryEntity
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
-import com.geekbrains.december.model.repository.Repository
-import com.geekbrains.december.model.repository.RepositoryIpml
+import com.geekbrains.december.ui.history.HistoryFragment
 
-class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
+class HistoryAdapter(private val itemClickListener: HistoryFragment.OnItemViewClickListener): RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
 
     private var movieList: List<DataFilms> = arrayListOf()
 
-    fun setFilms(newMovieList: List<DataFilms>) {
+    fun setData(newMovieList: List<DataFilms>) {
         this.movieList = newMovieList
         notifyDataSetChanged()
     }
@@ -53,12 +49,12 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder
                 listTmdbHistory.text = films.imdb.toString() // Рейтинг
                 listReleaseDateHistory.text = films.year.toString() // Год релиза
 
+                /*Кнопка удаления из базы данных истории фильма*/
+               imageButtonDelete.setOnClickListener {
+                   itemClickListener.onItemViewClick(films)
+                   imageButtonDelete.showSnackBarNoAction("Удалено из истории: ${listTitleHistory.text}")
+                }
                 root.setOnClickListener {
-                    /*Кнопка удаления из базы данных истории фильма*/
-                    imageButtonDelete.setOnClickListener {
-                       imageButtonDelete.showSnackBarNoAction("CLICK DELETE")
-                        //HistoryDAO.deleteByMovieId(???) - не могу понять как вобще реализовать
-                    }
                     Toast.makeText(itemView.context,"${listTitleHistory.text}", Toast.LENGTH_SHORT).show()
                 }
             }

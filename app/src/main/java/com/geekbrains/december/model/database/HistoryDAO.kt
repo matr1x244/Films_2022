@@ -23,6 +23,7 @@ interface HistoryDAO {
     @Delete
     fun delete(entity: HistoryEntity)
 
-    @Query("DELETE FROM HistoryEntity WHERE idMovieEntity = :idMovie")
-    fun deleteByMovieId(idMovie: Int?)
+    @Query("DELETE FROM HistoryEntity WHERE nameMovieEntity = :nameMovie")
+    fun deleteByMovieName(nameMovie: String?)
+    
 }

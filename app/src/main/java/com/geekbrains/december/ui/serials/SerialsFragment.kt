@@ -102,7 +102,7 @@ class SerialsFragment : Fragment() {
                             //
                         }
 
-                    }).apply { setFilms(appState.filmsData) }
+                    }).apply { setData(appState.filmsData) }
                     serialsFragmentRecyclerView.adapter = adapterSerial
                 }
                 is AppState.Loading -> {

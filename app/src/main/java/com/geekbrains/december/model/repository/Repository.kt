@@ -18,7 +18,8 @@ interface Repository {
 
     fun saveEntity(dataFilms: DataFilms)
 
-    fun deleteEntity(): List<HistoryEntity>
+    /*Удаление по кнопке*/
+    fun deleteEntity(dataFilms: DataFilms)
 
     /**
      * Список для перезагрузки ТЕСТ при прокручивании

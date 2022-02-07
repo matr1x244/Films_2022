@@ -1,25 +1,14 @@
 package com.geekbrains.december.ui.history
 
-import android.media.Image
 import android.os.Bundle
-import android.service.autofill.OnClickAction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.geekbrains.december.R
 import com.geekbrains.december.databinding.FragmentHistoryBinding
 import com.geekbrains.december.model.AppState
-import com.geekbrains.december.model.database.HistoryDAO
-import com.geekbrains.december.model.database.HistoryDAO_Impl
-import com.geekbrains.december.model.database.HistoryEntity
-import com.geekbrains.december.model.entities.showSnackBarAction
-import com.geekbrains.december.model.entities.showSnackBarNoAction
-import com.geekbrains.december.model.repository.Repository
+import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.ui.films.adapters.HistoryAdapter
-import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 class HistoryFragment: Fragment() {
@@ -28,7 +17,14 @@ class HistoryFragment: Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HistoryViewModel by inject()
-    private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
+
+    private val adapterHistory: HistoryAdapter by lazy { HistoryAdapter(object : OnItemViewClickListener {
+            override fun onItemViewClick(dataFilms: DataFilms) {
+                viewModel.deleteMovie(dataFilms) //удаляем
+                viewModel.getAllHistory() //обновленная история прогружаем
+            }
+    })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
@@ -37,7 +33,7 @@ class HistoryFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        historyFragmentRecyclerview.adapter = adapter
+        historyFragmentRecyclerview.adapter = adapterHistory
         viewModel.historyLiveData.observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getAllHistory()
     }
@@ -52,8 +48,8 @@ class HistoryFragment: Fragment() {
             is AppState.Success -> {
                 historyFragmentRecyclerview.visibility = View.VISIBLE
                 progressBarHistory.visibility = View.GONE
-                adapter.setFilms(appState.filmsData)
-            }
+                adapterHistory.setData(appState.filmsData)
+                }
             is AppState.Loading -> {
                 historyFragmentRecyclerview.visibility = View.GONE
                 progressBarHistory.visibility = View.VISIBLE
@@ -64,8 +60,15 @@ class HistoryFragment: Fragment() {
         }
     }
 
+    /*кликабельность на удаление*/
+    interface OnItemViewClickListener {
+        fun onItemViewClick(dataFilms: DataFilms)
+    }
+
+
     companion object {
         @JvmStatic
         fun newInstance() = HistoryFragment()
     }
+
 }

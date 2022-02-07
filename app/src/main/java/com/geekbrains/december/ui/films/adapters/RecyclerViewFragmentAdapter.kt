@@ -23,7 +23,7 @@ class RecyclerViewFragmentAdapter(private val itemClickListener: FilmsFragment.O
      * сетим лист фильмов
      */
     @SuppressLint("NotifyDataSetChanged")
-    fun setFilms(newMovieList: List<DataFilms>) {
+    fun setData(newMovieList: List<DataFilms>) {
         movieList.clear()
         movieList.addAll(newMovieList)
 

@@ -23,7 +23,7 @@ class FilmsFragment : Fragment() {
     private var _binding: FragmentFilmsBinding? = null
     private val binding get() = _binding!!
 
-    private var adapter: RecyclerViewFragmentAdapter? = null
+    private var adapterFilms: RecyclerViewFragmentAdapter? = null
 
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?)
@@ -38,7 +38,7 @@ class FilmsFragment : Fragment() {
 
 
             /*Запускаем RecyclerView*/
-            FilmsFragmentRecyclerView.adapter = adapter
+            FilmsFragmentRecyclerView.adapter = adapterFilms
 
             /*Для запуска и обвноления данных*/
             viewModel.getLiveData().observe(viewLifecycleOwner, {renderData(it)})
@@ -59,7 +59,7 @@ class FilmsFragment : Fragment() {
             is AppState.Success -> {
                 FilmsProgressBar.visibility = View.GONE // режим работы прогресс бара
                 containerFilmsFragment.showSnackBarNoAction("Загрузка успешна")
-                adapter = RecyclerViewFragmentAdapter(object : OnItemViewClickListener{
+                adapterFilms = RecyclerViewFragmentAdapter(object : OnItemViewClickListener{
                     override fun onItemViewClick(films: DataFilms) {
                         val manager = activity?.supportFragmentManager
                         manager?.let { manager ->
@@ -82,8 +82,8 @@ class FilmsFragment : Fragment() {
                         viewModel.getMoreMovies(from, sizeToRequest)
                     }
 
-                }).apply { setFilms(appState.filmsData) }
-                FilmsFragmentRecyclerView.adapter = adapter
+                }).apply { setData(appState.filmsData) }
+                FilmsFragmentRecyclerView.adapter = adapterFilms
             }
             is AppState.Loading -> {
                 FilmsProgressBar.visibility = View.VISIBLE
