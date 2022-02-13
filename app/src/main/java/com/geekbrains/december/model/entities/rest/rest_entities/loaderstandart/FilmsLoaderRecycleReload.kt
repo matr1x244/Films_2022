@@ -1,4 +1,4 @@
-package com.geekbrains.december.model
+package com.geekbrains.december.model.entities.rest.rest_entities.loaderstandart
 
 import android.os.Build
 import androidx.annotation.RequiresApi

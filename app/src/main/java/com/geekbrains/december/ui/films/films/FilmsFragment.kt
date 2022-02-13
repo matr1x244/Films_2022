@@ -1,9 +1,21 @@
-package com.geekbrains.december.ui.films.main
+package com.geekbrains.december.ui.films.films
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.geekbrains.december.R
@@ -13,7 +25,9 @@ import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
 import com.geekbrains.december.ui.films.adapters.RecyclerViewFragmentAdapter
 import com.geekbrains.december.ui.films.details.DetailsFragment
+import kotlinx.coroutines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 
 class FilmsFragment : Fragment() {
@@ -36,10 +50,8 @@ class FilmsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
 
-
             /*Запускаем RecyclerView*/
             FilmsFragmentRecyclerView.adapter = adapterFilms
-
             /*Для запуска и обвноления данных*/
             viewModel.getLiveData().observe(viewLifecycleOwner, {renderData(it)})
             viewModel.getFilmsFromLoad()
@@ -47,11 +59,11 @@ class FilmsFragment : Fragment() {
         }
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
 
     private fun renderData(appState: AppState) = with(binding){
@@ -65,15 +77,15 @@ class FilmsFragment : Fragment() {
                         manager?.let { manager ->
                             val bundle = Bundle().apply {
                                 putParcelable(DetailsFragment.BUNDLE_EXTRA, films)
-                           }
+                            }
                             /*я использую. в проекте навхост поэтому детаилс фрагмент нужно открывать так*/
                             requireActivity().findNavController(R.id.nav_host_fragment_activity_main).navigate(R.id.action_navigation_films_to_detailsFragment,bundle)
 
-                        /*так просто открываем и передаем в новый фрагмент без использования навхост
-                                manager.beginTransaction()
-                                .add(R.id.container_films_fragment,DetailsFragment.newInstance(bundle)) // ЧЕРЕЗ ФОН ИДЁТ КЛИКАБЕЛЬНОСТЬ!!! а если убрать белый фон тогда всё видно...
-                                .addToBackStack("")
-                                .commitAllowingStateLoss()*/
+                            /*так просто открываем и передаем в новый фрагмент без использования навхост
+                                    manager.beginTransaction()
+                                    .add(R.id.container_films_fragment,DetailsFragment.newInstance(bundle)) // ЧЕРЕЗ ФОН ИДЁТ КЛИКАБЕЛЬНОСТЬ!!! а если убрать белый фон тогда всё видно...
+                                    .addToBackStack("")
+                                    .commitAllowingStateLoss()*/
                         }
 
                     }
@@ -96,6 +108,7 @@ class FilmsFragment : Fragment() {
         }
     }
 
+
     interface OnItemViewClickListener {
         fun onItemViewClick(films: DataFilms)
         fun onDataEnd(from: Int, sizeToRequest: Int)
@@ -104,6 +117,5 @@ class FilmsFragment : Fragment() {
     companion object{
         fun newInstance() = FilmsFragment()
     }
-
 }
 

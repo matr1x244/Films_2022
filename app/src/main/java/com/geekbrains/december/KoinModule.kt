@@ -3,8 +3,9 @@ package com.geekbrains.december
 import com.geekbrains.december.model.repository.Repository
 import com.geekbrains.december.model.repository.RepositoryIpml
 import com.geekbrains.december.ui.films.details.DetailsViewModel
-import com.geekbrains.december.ui.films.main.FilmsViewModel
+import com.geekbrains.december.ui.films.films.FilmsViewModel
 import com.geekbrains.december.ui.history.HistoryViewModel
+import com.geekbrains.december.ui.maps.MapsViewModel
 import com.geekbrains.december.ui.serials.SerialsViewModel
 import com.geekbrains.december.ui.setting.SettingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -22,4 +23,6 @@ val appModule = module {
     viewModel { SerialsViewModel(get()) }
     viewModel { SettingViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
+
+    viewModel { MapsViewModel(get()) }
 }

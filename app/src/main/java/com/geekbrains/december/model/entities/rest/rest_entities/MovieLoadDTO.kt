@@ -18,7 +18,8 @@ data class Docs(
     @SerializedName("description") val description: String?,
     @SerializedName("slogan") val slogan: String?,
     @SerializedName("budget") val budget: Budget?,
-    @SerializedName("type") val type: String?
+    @SerializedName("type") val type: String?,
+    @SerializedName("enName") val enName: String?,
 )
 
 data class Rating(
@@ -34,6 +35,7 @@ data class Budget(
     @SerializedName ("value") val value: Number?,
     @SerializedName ("currency") val currency: String?
 )
+
 
 
 

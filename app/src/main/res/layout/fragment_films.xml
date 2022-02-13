@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container_films_fragment"
-    tools:context=".ui.films.main.FilmsFragment">
+    tools:context=".ui.films.films.FilmsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/FilmsFragmentRecyclerView"
@@ -31,6 +31,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/FilmsFragmentRecyclerView"
         tools:visibility="visible" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

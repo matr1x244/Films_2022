@@ -1,4 +1,4 @@
-package com.geekbrains.december.ui.films.details
+package com.geekbrains.december.ui.maps
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,11 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.repository.Repository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DetailsViewModel (private val repository: Repository) : ViewModel() {
+class MapsViewModel(private val repository: Repository) : ViewModel() {
 
     private val localLiveData: MutableLiveData<AppState> = MutableLiveData()
 
@@ -20,21 +19,15 @@ class DetailsViewModel (private val repository: Repository) : ViewModel() {
             return localLiveData
         }
 
-
-    fun loadData(id: Int?) {
+    fun loadCountry(id: Int) {
         localLiveData.value = AppState.Loading
-         /**
-         * корутины без использования Thread
-         */
-        viewModelScope.launch(Dispatchers.IO){
+
+        viewModelScope.launch(Dispatchers.IO) {
             val data = repository.getMovieFromServerDetail(id) // берем в потоке id
 
-            repository.saveEntity(data) // База данных истории (сохраняем когда запускаем определеннй фильм
-
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 localLiveData.value = (AppState.Success(listOf(data))) // записываем в livedata "value) данные
             }
         }
     }
 }
-

@@ -13,7 +13,7 @@ import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
 import com.geekbrains.december.ui.history.HistoryFragment
 
-class HistoryAdapter(private val itemClickListener: HistoryFragment.OnItemViewClickListener): RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
+class HistoryAdapter(private val itemClickListener: HistoryFragment.OnItemViewClickListenerHistory): RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
 
     private var movieList: List<DataFilms> = arrayListOf()
 
@@ -33,8 +33,7 @@ class HistoryAdapter(private val itemClickListener: HistoryFragment.OnItemViewCl
     override fun getItemCount() = movieList.size
 
 
-    inner class RecyclerItemViewHolder(private val binding: CardviewMovieHistoryListBinding)
-        : RecyclerView.ViewHolder(binding.root) {
+    inner class RecyclerItemViewHolder(private val binding: CardviewMovieHistoryListBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(films: DataFilms) = with(binding) {
             if (layoutPosition != RecyclerView.NO_POSITION){
@@ -50,9 +49,9 @@ class HistoryAdapter(private val itemClickListener: HistoryFragment.OnItemViewCl
                 listReleaseDateHistory.text = films.year.toString() // Год релиза
 
                 /*Кнопка удаления из базы данных истории фильма*/
-               imageButtonDelete.setOnClickListener {
-                   itemClickListener.onItemViewClick(films)
-                   imageButtonDelete.showSnackBarNoAction("Удалено из истории: ${listTitleHistory.text}")
+                imageButtonDelete.setOnClickListener {
+                    itemClickListener.onItemViewClick(films)
+                    imageButtonDelete.showSnackBarNoAction("Удалено из истории: ${listTitleHistory.text}")
                 }
                 root.setOnClickListener {
                     Toast.makeText(itemView.context,"${listTitleHistory.text}", Toast.LENGTH_SHORT).show()

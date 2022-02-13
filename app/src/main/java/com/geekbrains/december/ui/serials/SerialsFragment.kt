@@ -14,7 +14,7 @@ import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
 import com.geekbrains.december.ui.films.adapters.RecyclerViewFragmentAdapter
 import com.geekbrains.december.ui.films.details.DetailsFragment
-import com.geekbrains.december.ui.films.main.FilmsFragment
+import com.geekbrains.december.ui.films.films.FilmsFragment
 import com.geekbrains.december.ui.setting.datasetKeyCheckBox
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -117,7 +117,7 @@ class SerialsFragment : Fragment() {
 
 
     companion object{
-        fun newInstance() = FilmsFragment()
+        fun newInstance() = SerialsFragment()
     }
 
 

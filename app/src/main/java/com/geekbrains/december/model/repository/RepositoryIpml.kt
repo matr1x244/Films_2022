@@ -1,11 +1,6 @@
 package com.geekbrains.december.model.repository
 
-
-import android.graphics.Movie
-import android.os.AsyncTask
-import androidx.loader.content.AsyncTaskLoader
 import com.geekbrains.december.model.database.Database
-import com.geekbrains.december.model.database.HistoryDAO
 import com.geekbrains.december.model.database.HistoryEntity
 import com.geekbrains.december.model.entities.*
 import com.geekbrains.december.model.entities.rest.rest_entities.retrofit.MovieRepo
@@ -25,8 +20,7 @@ class RepositoryIpml: Repository {
             token = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
         ).execute().body()
 
-/*
-        *//* для загрузки через retrofit асинхронно enqueue*//*
+/*         для загрузки через retrofit асинхронно enqueue
         val dto = MovieRepo.api.getMovieDetails(id).enqueue(object : Callback<MovieDetailsDTO>{
             override fun onResponse(call: Call<MovieDetailsDTO>, response: Response<MovieDetailsDTO>) {
                 if(response.isSuccessful){
@@ -42,6 +36,7 @@ class RepositoryIpml: Repository {
             description = dto?.description,
             poster = dto?.poster?.url,
             slogan = dto?.slogan,
+            country = dto?.premiere?.country
         )
     }
 
@@ -132,7 +127,6 @@ class RepositoryIpml: Repository {
         return listMovieSerials
     }
 
-
     /**
      * Для базы данных
      */
@@ -145,13 +139,16 @@ class RepositoryIpml: Repository {
     }
 
 
-    /*Не работает удаление из базы данных*/
+    /*удаление из базы данных*/
     override fun deleteEntity(dataFilms: DataFilms) {
         Database.db.historyDao().deleteByMovieName(convertMovieToEntity(dataFilms).nameMovieEntity)
     }
 
+    override fun deleteEntityAll() {
+        Database.db.historyDao().deleteAll()
+    }
 
-    /*Не работает удаление из базы данных*/
+    /*удаление из базы данных*/
 
     private fun convertHistoryEntityToMovie(entityList: List<HistoryEntity>): List<DataFilms> {
         return entityList.map {
@@ -166,12 +163,14 @@ class RepositoryIpml: Repository {
 
     private fun convertMovieToEntity(dataFilms: DataFilms): HistoryEntity {
         return HistoryEntity(
-            0,
-            dataFilms.name,
-            dataFilms.imdb,
-            dataFilms.year,
-            dataFilms.poster)
+            dataFilms.id, // присваем ID с кинопоиска в базу !!!! если id в базу 0 ставить тогда будет дублировать записи.
+            dataFilms.name, // присваем name с кинопоиска в базу
+            dataFilms.imdb, // присваем imdb с кинопоиска в базу
+            dataFilms.year, // присваем year с кинопоиска в базу
+            dataFilms.poster) // присваем poster с кинопоиска в базу
     }
+
+
 
     /**
      * Для базы данных

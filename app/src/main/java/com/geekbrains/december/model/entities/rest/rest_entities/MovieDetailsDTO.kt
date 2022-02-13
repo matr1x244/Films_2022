@@ -12,7 +12,13 @@ data class MovieDetailsDTO(
     @SerializedName("description") val description: String?,
     @SerializedName("slogan") val slogan: String?,
     @SerializedName("type") val type: String?,
+    @SerializedName("premiere") val premiere: Premiere?
+
     //@SerializedName("videos") val videos: Videos?
+)
+
+data class Premiere(
+    @SerializedName("country") val country: String?
 )
 
 /*

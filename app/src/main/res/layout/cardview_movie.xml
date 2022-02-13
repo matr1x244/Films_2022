@@ -78,7 +78,6 @@
                 android:ellipsize="none"
                 android:text="@string/type" />
 
-
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>

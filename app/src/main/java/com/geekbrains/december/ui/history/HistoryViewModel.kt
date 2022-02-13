@@ -29,5 +29,13 @@ class HistoryViewModel (private val repository: Repository) : ViewModel() {
             historyLiveDataDelete.postValue(repository.deleteEntity(dataFilms))
         }
     }
+
+    fun deleteMovieAll() {
+        viewModelScope.launch(Dispatchers.IO) {
+            historyLiveDataDelete.postValue(repository.deleteEntityAll())
+        }
+    }
+
 }
+
 

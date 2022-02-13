@@ -15,8 +15,6 @@
     <string name="title_details_fragment">О видео</string>
 
     <!--Кнопка переключения-->
-    <string name="change_films_list">Изменить список фильмов</string>
-
     <string name="error">Ошибка</string>
     <string name="reload">Перезагрузить</string>
     <string name="info_tx_year">Дата премьеры:</string>
@@ -25,6 +23,34 @@
     <string name="genres">Тип</string>
     <string name="title_history_fragment">История запросов</string>
     <string name="history">История</string>
+    <string name="info_tx_country">Страна:</string>
     <!--Кнопка переключения-->
+
+    <!--Для навигации-->
+    <string name="dialog_button_close">Закрыть</string>
+    <string name="dialog_title_no_gps">Доступ к геолокации закрыт</string>
+    <string name="dialog_message_no_gps">Разрешите доступ к геолокации</string>
+    <string name="dialog_title_gps_turned_off">GPS отключён</string>
+    <string name="dialog_message_last_location_unknown">Местонахождение неизвестно. Включите GPS</string>
+    <string name="dialog_message_last_known_location">Показана последняя известная локация. Включите GPS</string>
+    <string name="dialog_rationale_title">Доступ к геолокации</string>
+    <string name="dialog_rationale_meaasge">Объяснение</string>
+    <string name="dialog_rationale_give_access">Предоставить доступ</string>
+    <string name="dialog_rationale_decline">Не надо</string>
+    <string name="dialog_address_title">Ваш адрес</string>
+    <!--Для навигации-->
+
+    <string name="map">Карта</string>
+    <string name="map_mode">Режим карты</string>
+    <string name="normal">Нормальный</string>
+    <string name="satellites">Спутники</string>
+    <string name="terrain">Схема</string>
+    <string name="enter_query">Введите запрос</string>
+    <string name="search">Найти</string>
+    <string name="start_marker">Старт</string>
+
+    <!--КЛЮЧ GOOGLEMAPS-->
+    <string name="google_map_key" translatable="false">AIzaSyD3sR5S8GQp0xMzCEg7UEEN-nm3jDv-VW8</string>
+    <string name="country">Страна(премьера)</string>
 
 </resources>

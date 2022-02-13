@@ -1,6 +1,5 @@
 package com.geekbrains.december.model.repository
 
-import com.geekbrains.december.model.database.HistoryEntity
 import com.geekbrains.december.model.entities.DataFilms
 
 interface Repository {
@@ -20,6 +19,8 @@ interface Repository {
 
     /*Удаление по кнопке*/
     fun deleteEntity(dataFilms: DataFilms)
+
+    fun deleteEntityAll()
 
     /**
      * Список для перезагрузки ТЕСТ при прокручивании

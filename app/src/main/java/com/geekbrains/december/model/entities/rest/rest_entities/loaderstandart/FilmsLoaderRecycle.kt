@@ -1,8 +1,8 @@
-package com.geekbrains.december.model
+package com.geekbrains.december.model.entities.rest.rest_entities.loaderstandart
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.geekbrains.december.model.entities.rest.rest_entities.MovieDetailsDTO
+import com.geekbrains.december.model.entities.rest.rest_entities.MovieLoadDTO
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -12,29 +12,25 @@ import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
 
 private const val API_KEY = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
+private const val YEAR_FILMS = "2018"
+private const val SEARCH_PAGE = "5-11"
 
-object FilmsLoaderDetails {
-    fun loadFilmsDetails(id: Int): MovieDetailsDTO? {
+object FilmsLoaderRecycle {
+    fun loadFilmsRecycle(): MovieLoadDTO? {
         try {
-            val uri = URL ("https://api.kinopoisk.dev/movie?search=${id}&field=id&token=$API_KEY") // что нужно передать в API
-
+            val uri = URL("https://api.kinopoisk.dev/movie?field=rating.kp&search=${SEARCH_PAGE}&field=year&search=${YEAR_FILMS}&sortField=year&sortType=1&token=${API_KEY}")
             lateinit var urlConnection: HttpsURLConnection
-            try {
+            try{
                 urlConnection = uri.openConnection() as HttpsURLConnection
                 urlConnection.requestMethod = "GET"
-
-                // TOKEN
-                //urlConnection.addRequestProperty("token", "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82")
-
-                urlConnection.readTimeout = 1000
+                urlConnection.readTimeout = 10000
                 val bufferedReader = BufferedReader(InputStreamReader(urlConnection.inputStream))
-                // преобразование ответа от сервера (JSON) в модель данных (FilmsDTO)
                 val lines = if(Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                     getLinesForOld(bufferedReader)
                 } else {
                     getLines(bufferedReader)
                 }
-                return Gson().fromJson(lines, MovieDetailsDTO::class.java)
+                return Gson().fromJson(lines, MovieLoadDTO::class.java)
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
@@ -43,7 +39,6 @@ object FilmsLoaderDetails {
         } catch (e: MalformedURLException) {
             e.printStackTrace()
         }
-
         return null
     }
 

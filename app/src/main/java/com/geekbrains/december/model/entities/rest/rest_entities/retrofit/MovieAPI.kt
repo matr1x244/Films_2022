@@ -14,7 +14,7 @@ interface MovieAPI {
     fun getMovieDetails(
         @Query("search") id: Int?,
         @Query("field") field: String,
-        @Query("token") token: String,
+        @Query("token") token: String
 
         ) : Call <MovieDetailsDTO>
 
@@ -44,3 +44,4 @@ interface MovieAPI {
 
     ) : Call <MovieLoadDTO>
 }
+

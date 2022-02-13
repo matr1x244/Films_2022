@@ -1,6 +1,7 @@
 package com.geekbrains.december.model.entities
 
 import android.content.Context
+import android.text.style.BackgroundColorSpan
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar

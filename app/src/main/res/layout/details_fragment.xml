@@ -102,24 +102,36 @@
                 app:layout_constraintTop_toTopOf="@+id/list_tmdb" />
 
             <TextView
-                android:id="@+id/listbudget"
+                android:id="@+id/info_tx_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text=""
-                app:layout_constraintBottom_toTopOf="@+id/cardView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/list_slogan" />
+                android:text="@string/info_tx_country"
+                app:layout_constraintBottom_toTopOf="@+id/list_slogan"
+                app:layout_constraintStart_toEndOf="@+id/item_poster"
+                app:layout_constraintTop_toBottomOf="@+id/list_release_date" />
+
+            <TextView
+                android:id="@+id/listCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/country"
+                app:layout_constraintStart_toEndOf="@+id/info_tx_country"
+                app:layout_constraintTop_toBottomOf="@+id/list_release_date" />
 
             <TextView
                 android:id="@+id/list_slogan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ellipsize="end"
                 android:text="@string/slogan"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_poster" />
 
@@ -128,7 +140,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:clipChildren="false"
@@ -155,9 +167,23 @@
                     android:text="@string/move_about"
                     android:textColor="@color/black" />
 
-
             </androidx.cardview.widget.CardView>
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/mapsFragmentFABtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#FFFFFF"
+                android:clickable="true"
+                android:src="@drawable/ic_my_location"
+                app:backgroundTint="#2D000000"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.952"
+                app:layout_constraintStart_toStartOf="parent"
+                app:maxImageSize="50dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -167,7 +193,7 @@
         android:id="@+id/filmsGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="list_slogan,list_description,list_id,item_poster,list_title,list_tmdb,list_release_date"
+        app:constraint_referenced_ids="list_slogan,list_description,list_id,item_poster,list_title,list_tmdb,list_release_date,mapsFragmentFABtn"
         tools:ignore="NotSibling" />
 
 

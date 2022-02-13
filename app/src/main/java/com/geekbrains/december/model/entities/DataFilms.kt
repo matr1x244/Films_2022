@@ -13,7 +13,9 @@ data class DataFilms(
     var year: Int? = 0,
     var description: String? = "description",
     var slogan: String? = "slogan",
-    var type: String? = ""
+    var type: String? = "",
+    val country: String? = "TEST USA"
+
 ) : Parcelable
 
 /*fun getMovieServers() : List<DataFilms>{

@@ -1,9 +1,11 @@
 package com.geekbrains.december.model.database
 
 import androidx.room.*
+import kotlin.math.absoluteValue
 
 /**
  * Запросы и т.д в базу данных (интерфейс)
+ * onConflict = OnConflictStrategy.REPLACE ??? не работает вставляет одинаковые данные
  */
 
 @Dao
@@ -25,5 +27,8 @@ interface HistoryDAO {
 
     @Query("DELETE FROM HistoryEntity WHERE nameMovieEntity = :nameMovie")
     fun deleteByMovieName(nameMovie: String?)
-    
+
+    @Query("DELETE FROM HistoryEntity")
+    fun deleteAll()
+
 }

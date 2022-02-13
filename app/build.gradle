@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -58,7 +59,11 @@ dependencies {
     implementation 'io.coil-kt:coil:1.4.0'
     //Room
     implementation  "androidx.room:room-runtime:2.4.1"
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
     kapt 'androidx.room:room-compiler:2.4.1'
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     //Test
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
