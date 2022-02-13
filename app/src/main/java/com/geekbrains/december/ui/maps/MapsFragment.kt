@@ -48,14 +48,11 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         ) {map.isMyLocationEnabled = true }
 
-        /**/
-        val LocalStartPositionMaker = LatLng(56.6286309, 47.9279793) //LatLng(56.6286309, 47.9279793)
-        val marker = googleMap.addMarker(
-            MarkerOptions()
-                .position(LocalStartPositionMaker)
-                .title("Йошкар-Ола (Кинотеатр Супер8)")
-        )
-        marker?.let { markers.add(it) }
+        /*Точка на карте*/
+
+        val LocalStartPositionMaker = LatLng(56.6286309, 47.9279793)
+        val markerLocalStart = googleMap.addMarker(MarkerOptions().position(LocalStartPositionMaker).title("Йошкар-Ола (Кинотеатр Супер8)"))
+        markerLocalStart?.let { markers.add(it) }
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(LocalStartPositionMaker))
 
@@ -67,6 +64,7 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setHasOptionsMenu(true)
     }
 
@@ -77,13 +75,11 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.maps_google) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
         arguments?.getInt(BUNDLE_EXTRA_MAPS)?.let {
-
             viewModel.loadCountry(it)
             with(binding) {
                 viewModel.filmsLiveData.observe(viewLifecycleOwner) { appState ->
@@ -156,10 +152,7 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
     }
 
     private fun setMarker(location: LatLng, searchText: String) {
-        map.addMarker(
-            MarkerOptions()
-                .position(location)
-                .title(searchText)
+        map.addMarker(MarkerOptions().position(location).title(searchText)
         )?.let { markers.add(it) }
     }
 
@@ -187,3 +180,4 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
         }
     }
 }
+

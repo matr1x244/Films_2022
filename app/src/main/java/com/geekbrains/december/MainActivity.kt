@@ -1,6 +1,7 @@
 package com.geekbrains.december
 
 import android.os.Bundle
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,6 +9,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.geekbrains.december.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        /*PUSH MESSAGE*/
+        FirebaseMessaging.getInstance().token.addOnSuccessListener {
+            //Toast.makeText(this,"Token: $it",Toast.LENGTH_LONG).show()
+        }
+
+        val tiketId = intent.extras?.getString("tiketId", "0")
+        Toast.makeText(this, tiketId.toString(), Toast.LENGTH_SHORT).show()
 
     }
 }

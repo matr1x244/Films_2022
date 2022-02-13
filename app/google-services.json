@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "667209459879",
+    "project_id": "filmsdecember",
+    "storage_bucket": "filmsdecember.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667209459879:android:da233691672ae8708f5382",
+        "android_client_info": {
+          "package_name": "com.geekbrains.december"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667209459879-naiq4ils006he90ujoinckf6tg8ip4bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5voWKYozZkGoxWOwAM-pc6z44SkQKJ28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667209459879-naiq4ils006he90ujoinckf6tg8ip4bt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
