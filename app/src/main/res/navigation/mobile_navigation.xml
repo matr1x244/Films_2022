@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.geekbrains.december.ui.films.details.DetailsFragment"
+        android:name="com.geekbrains.december.ui.details.DetailsFragment"
         android:label="@string/title_details_fragment" >
         <argument
             android:name="films"

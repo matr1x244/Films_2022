@@ -8,15 +8,15 @@
     tools:context=".ui.setting.SettingFragment">
 
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_checkbox_serials"
+    <CheckBox
+        android:id="@+id/checkbox_serials"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:checked="true"
         android:text="@string/checkbox_serials_filter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textTestSetting"
@@ -28,6 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="39dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

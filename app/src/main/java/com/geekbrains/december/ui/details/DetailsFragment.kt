@@ -1,4 +1,4 @@
-package com.geekbrains.december.ui.films.details
+package com.geekbrains.december.ui.details
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -97,12 +97,7 @@ class DetailsFragment: Fragment(), CoroutineScope by MainScope() {
                                     }
                                 }
                             })
-
-
                         }
-/*                        is AppState.SuccessPers -> {
-
-                        }*/
                         }
                     }
                 }
@@ -186,7 +181,7 @@ class DetailsFragment: Fragment(), CoroutineScope by MainScope() {
                 .setTitle(getString(R.string.dialog_address_title))
                 .setMessage(address)
                 .setPositiveButton(getString(R.string.dialog_address_title)) { _, _ ->
-                    //openDetailsFragment(DataFilms(address, location.latitude,location.longitude))) // сюда надо засетить страну происхождения фильма по координатам
+                //openDetailsFragment(DataFilms(address, location.latitude,location.longitude))) // сюда надо засетить страну происхождения фильма по координатам
                 }
                 .setNegativeButton(getString(R.string.dialog_button_close)) { dialog, _ -> dialog.dismiss() }
                 .create()
@@ -194,17 +189,6 @@ class DetailsFragment: Fragment(), CoroutineScope by MainScope() {
         }
     }
 
-    /*    private fun openDetailsFragment(films: DataFilms) {
-        val manager = activity?.supportFragmentManager
-        manager?.let { manager ->
-            val bundle = Bundle().apply {
-                putParcelable(DetailsFragment.BUNDLE_EXTRA, films)
-            }
-            *//*я использую. в проекте навхост поэтому детаилс фрагмент нужно открывать так*//*
-            requireActivity().findNavController(R.id.nav_host_fragment_activity_main)
-                .navigate(R.id.action_navigation_films_to_detailsFragment, bundle)
-        }
-    }*/
 
         companion object {
             const val BUNDLE_EXTRA = "films"

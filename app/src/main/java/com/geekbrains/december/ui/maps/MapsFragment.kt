@@ -3,6 +3,7 @@ package com.geekbrains.december.ui.maps
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -12,7 +13,6 @@ import androidx.fragment.app.Fragment
 import com.geekbrains.december.R
 import com.geekbrains.december.databinding.FragmentMapsBinding
 import com.geekbrains.december.model.AppState
-import com.geekbrains.december.model.entities.DataFilms
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -41,11 +42,26 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
 
-        map.uiSettings.isZoomControlsEnabled = true
-        map.uiSettings.isMyLocationButtonEnabled = true
+        map.uiSettings.isZoomControlsEnabled = true // кнопки увеличение приближение
+        map.uiSettings.isMyLocationButtonEnabled = true // моё местонахождение
 
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
-        ) {map.isMyLocationEnabled = true
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        ) {map.isMyLocationEnabled = true }
+
+        /**/
+        val LocalStartPositionMaker = LatLng(56.6286309, 47.9279793) //LatLng(56.6286309, 47.9279793)
+        val marker = googleMap.addMarker(
+            MarkerOptions()
+                .position(LocalStartPositionMaker)
+                .title("Йошкар-Ола (Кинотеатр Супер8)")
+        )
+        marker?.let { markers.add(it) }
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(LocalStartPositionMaker))
+
+        googleMap.setOnMapLongClickListener { latLng ->
+            setMarker(latLng,"Новая точка")
+            drawLine()
         }
     }
 
@@ -132,7 +148,9 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
     private fun goToAddress(addresses: MutableList<Address>, searchText: String) {
         launch {
             val location = LatLng(addresses[0].latitude, addresses[0].longitude)
+
             setMarker(location, searchText)
+
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 2f))
         }
     }
@@ -143,6 +161,20 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
                 .position(location)
                 .title(searchText)
         )?.let { markers.add(it) }
+    }
+
+    private fun drawLine() {
+        val last: Int = markers.size - 1
+        if (last >= 1) {
+            val previous: LatLng = markers[last - 1].position
+            val current: LatLng = markers[last].position
+            map.addPolyline(
+                PolylineOptions()
+                    .add(previous, current)
+                    .color(Color.RED)
+                    .width(1f)
+            )
+        }
     }
 
     companion object {

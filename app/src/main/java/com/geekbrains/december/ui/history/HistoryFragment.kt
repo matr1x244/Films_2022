@@ -9,9 +9,7 @@ import com.geekbrains.december.databinding.FragmentHistoryBinding
 import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
-import com.geekbrains.december.model.repository.Repository
-import com.geekbrains.december.ui.films.adapters.HistoryAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.geekbrains.december.ui.adapters.HistoryAdapter
 import org.koin.android.ext.android.inject
 
 class HistoryFragment(): Fragment() {

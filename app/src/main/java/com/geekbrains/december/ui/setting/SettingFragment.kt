@@ -42,8 +42,8 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         loadDataSetSetting()
-        switchCheckboxSerials.isChecked = isDataCheckBoxSetDefault
-        switchCheckboxSerials.setOnClickListener { changeCheckBoxContent() }
+        checkboxSerials.isChecked = isDataCheckBoxSetDefault
+        checkboxSerials.setOnClickListener { changeCheckBoxContent() }
 
     }
 

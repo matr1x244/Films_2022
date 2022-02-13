@@ -1,4 +1,4 @@
-package com.geekbrains.december.ui.films.adapters
+package com.geekbrains.december.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

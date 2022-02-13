@@ -12,8 +12,8 @@ import com.geekbrains.december.databinding.FragmentSerialsBinding
 import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
-import com.geekbrains.december.ui.films.adapters.RecyclerViewFragmentAdapter
-import com.geekbrains.december.ui.films.details.DetailsFragment
+import com.geekbrains.december.ui.adapters.RecyclerViewFragmentAdapter
+import com.geekbrains.december.ui.details.DetailsFragment
 import com.geekbrains.december.ui.films.films.FilmsFragment
 import com.geekbrains.december.ui.setting.datasetKeyCheckBox
 import org.koin.androidx.viewmodel.ext.android.viewModel

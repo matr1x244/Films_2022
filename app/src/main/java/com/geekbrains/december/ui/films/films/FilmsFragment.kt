@@ -1,21 +1,9 @@
 package com.geekbrains.december.ui.films.films
 
-import android.Manifest
-import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.Context
-import android.content.pm.PackageManager
-import android.location.Geocoder
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.geekbrains.december.R
@@ -23,9 +11,8 @@ import com.geekbrains.december.databinding.FragmentFilmsBinding
 import com.geekbrains.december.model.AppState
 import com.geekbrains.december.model.entities.DataFilms
 import com.geekbrains.december.model.entities.showSnackBarNoAction
-import com.geekbrains.december.ui.films.adapters.RecyclerViewFragmentAdapter
-import com.geekbrains.december.ui.films.details.DetailsFragment
-import kotlinx.coroutines.*
+import com.geekbrains.december.ui.adapters.RecyclerViewFragmentAdapter
+import com.geekbrains.december.ui.details.DetailsFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
