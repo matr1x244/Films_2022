@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--VERSION-->
+    <string name="version_app_text">Версия приложения 0.9</string>
+</resources>

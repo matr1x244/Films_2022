@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val tiketId = intent.extras?.getString("tiketId", "0")
-        Toast.makeText(this, tiketId.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, tiketId.toString(), Toast.LENGTH_SHORT).show()
 
     }
 }

@@ -53,4 +53,7 @@
     <string name="google_map_key" translatable="false">AIzaSyD3sR5S8GQp0xMzCEg7UEEN-nm3jDv-VW8</string>
     <string name="country">Страна(премьера)</string>
 
+    <!--VERSION-->
+    <string name="version_app_text">version_app_text</string>
+
 </resources>

@@ -25,11 +25,11 @@ interface MovieAPI {
         @Query("search") searchRating: String,
         @Query("field") fieldYear: String,
         @Query("search") searchYear: String,
-        @Query("field") fieldTypeNimber: String,
+        @Query("field") fieldTypeNumber: String,
         @Query("search") searchTypeNumber: String,
         @Query("token") token: String,
 
-    ) : Call <MovieLoadDTO>
+        ) : Call <MovieLoadDTO>
 
     @GET("movie?sortField=votes.imdb&sortType=-1")
 
@@ -38,7 +38,7 @@ interface MovieAPI {
         @Query("search") searchRating: String,
         @Query("field") fieldYear: String,
         @Query("search") searchYear: String,
-        @Query("field") fieldTypeNimber: String,
+        @Query("field") fieldTypeNumber: String,
         @Query("search") searchTypeNumber: String,
         @Query("token") token: String
 

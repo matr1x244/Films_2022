@@ -97,7 +97,6 @@ class SerialsFragment : Fragment() {
                             }
 
                         }
-
                         override fun onDataEnd(from: Int, sizeToRequest: Int) {
                             //
                         }

@@ -5,6 +5,8 @@ import com.geekbrains.december.model.database.HistoryEntity
 import com.geekbrains.december.model.entities.*
 import com.geekbrains.december.model.entities.rest.rest_entities.retrofit.MovieRepo
 
+private const val KEY_KINOPOISK = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
+
 class RepositoryIpml: Repository {
 
     /*ПЕРЕДАЕМ ДЕТАЛИ по фильму*/
@@ -17,7 +19,7 @@ class RepositoryIpml: Repository {
         val dto = MovieRepo.api.getMovieDetails(
             id,
             field = "id",
-            token = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
+            token = "$KEY_KINOPOISK"
         ).execute().body()
 
 /*         для загрузки через retrofit асинхронно enqueue
@@ -47,9 +49,9 @@ class RepositoryIpml: Repository {
             searchRating = "7-10",
             fieldYear = "year",
             searchYear = "2005",
-            fieldTypeNimber = "typeNumber",
+            fieldTypeNumber = "typeNumber",
             searchTypeNumber = "1",
-            token = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
+            token = "$KEY_KINOPOISK"
         ).execute().body()
 
         val dtoLoad = dtoFilmsServers?.docs
@@ -75,9 +77,9 @@ class RepositoryIpml: Repository {
             searchRating = "2-5",
             fieldYear = "year",
             searchYear = "2018",
-            fieldTypeNimber = "typeNumber",
+            fieldTypeNumber = "typeNumber",
             searchTypeNumber = "1",
-            token = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
+            token = "$KEY_KINOPOISK"
         ).execute().body()
 
         val dtoServerReload = dtoFilmsServersReload?.docs
@@ -102,12 +104,12 @@ class RepositoryIpml: Repository {
     override fun getMovieFromServerSerials(): List<DataFilms> {
         val dtoSerialsServers = MovieRepo.api.getMovieRecyclerSerials(
             fieldRating = "rating.kp",
-            searchRating = "1-5",
+            searchRating = "1-8",
             fieldYear = "year",
-            searchYear = "2020-2022",
-            fieldTypeNimber = "typeNumber",
+            searchYear = "2018-2022",
+            fieldTypeNumber = "typeNumber",
             searchTypeNumber = "2",
-            token = "1KK4612-HEMM8RX-P3QSGPJ-VR0AQ82"
+            token = "$KEY_KINOPOISK"
         ).execute().body()
 
         val dtoLoad = dtoSerialsServers?.docs

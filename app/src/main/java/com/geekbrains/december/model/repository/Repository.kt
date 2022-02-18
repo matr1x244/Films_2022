@@ -28,5 +28,4 @@ interface Repository {
 
     fun getMovieFromServerFilmsReload(): List<DataFilms>
 
-
 }

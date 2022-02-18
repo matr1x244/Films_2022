@@ -50,13 +50,16 @@ class RecyclerViewFragmentAdapter(private val itemClickListener: FilmsFragment.O
      * Загружает данные в указанной позиции в представления, ссылки на которые хранятся в заданном заполнителе представления
      */
     override fun onBindViewHolder(holderFilms: FilmsViewHolder, position: Int) {
-        holderFilms.bind(movieList[position])
-        /*Список для перезагрузки ТЕСТ при прокручивании*/
-        if (position == movieList.size - 1){
-            itemClickListener.onDataEnd(movieList.size +1, sizeToRequest = 10)
-        }
-        /*Список для перезагрузки ТЕСТ при прокручивании*/
-    }
+         holderFilms.setIsRecyclable(false)
+         holderFilms.bind(movieList[position])
+
+         /*Список для перезагрузки ТЕСТ при прокручивании*/
+         if (position == movieList.size - 1) {
+             itemClickListener.onDataEnd(movieList.size + 1, sizeToRequest = 10)
+             /*Список для перезагрузки ТЕСТ при прокручивании*/
+         }
+
+     }
 
     /**
      * создаём размер и возвращаем его

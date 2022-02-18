@@ -31,10 +31,10 @@ class SettingFragment : Fragment() {
     ): View? {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
 
-        val textView: TextView = binding.textTestSetting
+/*        val textView: TextView = binding.textTestSetting
         viewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
-        })
+        })*/
 
         return binding.root
     }

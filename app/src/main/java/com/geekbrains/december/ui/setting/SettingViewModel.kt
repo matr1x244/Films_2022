@@ -9,9 +9,9 @@ import com.geekbrains.december.model.repository.Repository
 class SettingViewModel(private val repository: Repository) : ViewModel() {
 
 
-    private val textView = MutableLiveData<String>().apply {
-        value = "НАСТРОЙКИ ТЕСТОВАЯ НАДПИСЬ"
+/*    private val textView = MutableLiveData<String>().apply {
+        value = "НАСТРОЙКИ ТЕСТОВАЯ НАДПИСЬ$"
     }
 
-    val text: LiveData<String> = textView
+    val text: LiveData<String> = textView*/
 }

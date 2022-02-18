@@ -15,8 +15,6 @@ import com.geekbrains.december.ui.adapters.RecyclerViewFragmentAdapter
 import com.geekbrains.december.ui.details.DetailsFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
-
 class FilmsFragment : Fragment() {
 
     private val viewModel: FilmsViewModel by viewModel()
@@ -59,6 +57,7 @@ class FilmsFragment : Fragment() {
                 FilmsProgressBar.visibility = View.GONE // режим работы прогресс бара
                 containerFilmsFragment.showSnackBarNoAction("Загрузка успешна")
                 adapterFilms = RecyclerViewFragmentAdapter(object : OnItemViewClickListener{
+
                     override fun onItemViewClick(films: DataFilms) {
                         val manager = activity?.supportFragmentManager
                         manager?.let { manager ->
@@ -98,6 +97,7 @@ class FilmsFragment : Fragment() {
 
     interface OnItemViewClickListener {
         fun onItemViewClick(films: DataFilms)
+        /*Для обновления списка*/
         fun onDataEnd(from: Int, sizeToRequest: Int)
     }
 
